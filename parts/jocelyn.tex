@@ -92,7 +92,6 @@
   to us is the magnitude.
 
   Let's look at an example.
-
   \begin{figure}[!htb]
   \minipage{0.32\textwidth}
     \includegraphics[width=\linewidth]{jocelyn/01/original.png}
@@ -110,9 +109,8 @@
     \label{fig:phase1}
   \endminipage
   \end{figure}
-
   Figure~\ref{fig:original1} is our original image. While
-  figure~\ref{fig:mag1} and figure~\ref{fig:phase1} show the
+  figures~\ref{fig:mag1} and \ref{fig:phase1} show the
   magnitude and phase of the Fourier Transform respectively.
 
   Even though the information pertinent to us is the magnitude,
@@ -127,10 +125,9 @@
   Transform of the phase without the magnitude, we will get an
   outline of what the image is without any other color detail
   (Kundur 17-19). In our example, we would get the image in
-  figure~\ref{fig:phaseonly} Note that because we 
+  figure~\ref{fig:phaseonly} Note that because we
   preserved the phase, we know where each frequency should be
   located, therefore we will get an outline of the image.
-
   \begin{figure}[!htb]
   \minipage{0.32\textwidth}
     \includegraphics[width=\linewidth]{jocelyn/01/original.png}
@@ -162,7 +159,7 @@
   to information loss (Fisher 3).
 
   In most Discrete Fourier Transform images, the Fourier image is
-  shifted such that F(0,0), the image mean, is centered in the
+  shifted such that $F(0,0)$, the image mean, is centered in the
   middle (Fisher 3).  Hence, the further from the origin, the
   higher the frequency, the lower the magnitude.  In all of the
   pictures of the Discrete Fourier Transform in image processing in
@@ -176,6 +173,93 @@
   a few examples of manipulating the Fourier Transform and  showing
   what the results would be like if we were to take the inverse
   Fourier Transform back to the original image.
+  \begin{figure}[!htb]
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/original.png}
+      \caption{Original}
+      \label{fig:original2}
+    \endminipage\hfill
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/originalspectrum.png}
+      \caption{Spectrum}
+      \label{fig:spectrum2}
+    \endminipage
+  \end{figure}
+  \begin{figure}[!htb]
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/lpspectrum.png}
+      \caption{Low Pass Spectrum}
+      \label{fig:lpspectrum}
+    \endminipage\hfill
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/lpinverse.png}
+      \caption{Low Pass Inverse}
+      \label{fig:lpinverse}
+    \endminipage
+  \end{figure}
+  \begin{figure}[!htb]
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/hpspectrum.png}
+      \caption{High Pass Spectrum}
+      \label{fig:hpspectrum}
+    \endminipage\hfill
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/hpinverse.png}
+      \caption{High Pass Inverse}
+      \label{fig:hpinverse}
+    \endminipage
+  \end{figure}
+  \begin{figure}[!htb]
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/bp1spectrum.png}
+      \caption{Band Pass Spectrum}
+      \label{fig:bp1spectrum}
+    \endminipage\hfill
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/bp1inverse.png}
+      \caption{Band Pass Inverse}
+      \label{fig:bp1inverse}
+    \endminipage
+  \end{figure}
+  \begin{figure}[!htb]
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/bp2spectrum.png}
+      \caption{Band Pass Spectrum}
+      \label{fig:bp2spectrum}
+    \endminipage\hfill
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/bp2inverse.png}
+      \caption{Band Pass Inverse}
+      \label{fig:bp2inverse}
+    \endminipage
+  \end{figure}
+  \begin{figure}[!htb]
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/bp3spectrum.png}
+      \caption{Band Pass Spectrum}
+      \label{fig:bp3spectrum}
+    \endminipage\hfill
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/bp3inverse.png}
+      \caption{Band Pass Inverse}
+      \label{fig:bp3inverse}
+    \endminipage
+  \end{figure}
+  \begin{figure}[!htb]
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/bp4spectrum.png}
+      \caption{Band Pass Spectrum}
+      \label{fig:bp4spectrum}
+    \endminipage\hfill
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/02/bp4inverse.png}
+      \caption{Band Pass Inverse}
+      \label{fig:bp4inverse}
+    \endminipage
+  \end{figure}
+  When we only take the lower frequencies and zero out the higher
+  frequencies in the Fourier Transform image, we obtain the
+  following:
 
   Notice here in the Fourier Transform image we have the brightest
   spot preserved.  However, we did lose quite a bit of high
