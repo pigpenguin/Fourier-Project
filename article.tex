@@ -7,6 +7,8 @@
 \usepackage{amsthm}
 \usepackage{mathrsfs}
 \usepackage{float}
+\usepackage{biblatex}
+\addbibresource{article.bib}
 \graphicspath{{img/}{../img/}}
 
 \begin{document}
@@ -15,4 +17,6 @@
   \subfile{./parts/ethan}
   \subfile{./parts/jocelyn}
   \subfile{./parts/evar}
+  \nocite{*} %print our entire bibliography
+  \printbibliography
 \end{document}
