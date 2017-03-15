@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{report}
 \usepackage{subfiles}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -9,11 +9,15 @@
 \usepackage{float}
 \usepackage{biblatex}
 \addbibresource{article.bib}
+\usepackage{titlesec}
+\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge\it}
 \graphicspath{{img/}{../img/}}
 
 \begin{document}
+  \chapter{Theory}
   \subfile{./parts/joe}
   \subfile{./parts/tom}
+  \chapter{Applications}
   \subfile{./parts/ethan}
   \subfile{./parts/jocelyn}
   \subfile{./parts/evar}
