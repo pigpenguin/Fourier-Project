@@ -185,6 +185,11 @@
       \label{fig:spectrum2}
     \endminipage
   \end{figure}
+
+  When we only take the lower frequencies and zero out the higher
+  frequencies in the Fourier Transform image, we obtain the spectrum
+  in figure~\ref{fig:lpspectrum} who's inverse fourier transform
+  is shown in figure~\ref{fig:lpinverse}.
   \begin{figure}[!htb]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/lpspectrum.png}
@@ -197,6 +202,21 @@
       \label{fig:lpinverse}
     \endminipage
   \end{figure}
+  Notice here in the Fourier Transform image we have the brightest
+  spot preserved.  However, we did lose quite a bit of high
+  frequency and even some of the lower frequencies.  Many of the
+  bright spots in the original Fourier Transform image is lost.
+  This is why the image after taking the inverse Fourier Transform
+  of the new Fourier Transform image is so blurry.  We lost too much
+  information in the Fourier Transform.
+
+  Earlier in this section we said that the magnitude of the Fourier
+  Transform told us how much of a frequency component was present in
+  the image.  This becomes apparent when we keep the high
+  frequencies but zero out the lower frequencies in the Fourier
+  Transform. This effect is highlighted in figure~\ref{fig:hpinverse}
+  which was obtained via the inverse of the spectrum shown in
+  figure~\ref{fig:hpspectrum}.
   \begin{figure}[!htb]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/hpspectrum.png}
@@ -209,6 +229,18 @@
       \label{fig:hpinverse}
     \endminipage
   \end{figure}
+
+  Since the lower frequencies contain more information, the color of
+  the image is mostly lost.  However, because we preserved the phase
+  and still have the higher frequencies, we are able to obtain an
+  outline of an image.  This is known as edge detection as the
+  Fourier Transform is able to show the highly contrasted color
+  changes of the original image.
+
+  The following images take out frequencies above and below a
+  certain band limit.  So within this band in the Fourier
+  Transform shown in figure~\ref{fig:bp1spectrum}, it becomes
+  figure~\ref{fig:bp1inverse} after an inverse fourier transform.
   \begin{figure}[!htb]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/bp1spectrum.png}
@@ -221,6 +253,14 @@
       \label{fig:bp1inverse}
     \endminipage
   \end{figure}
+
+  In the following image, we did the same thing.  However, this time
+  we decreased the size of the band in the Fourier Transform.  Note
+  that because the band is smaller, we have less information about
+  the image.  Therefore, the inverse Fourier Transform image in
+  figure~\ref{fig:bp2inverse}
+  is much blurrier than the inverse Fourier Transform of the image
+  in figure~\ref{fig:bp1inverse}
   \begin{figure}[!htb]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/bp2spectrum.png}
@@ -233,6 +273,10 @@
       \label{fig:bp2inverse}
     \endminipage
   \end{figure}
+
+  Finally we take a wide high frequency band limit in
+  figure~\ref{bp3spectrum} and then reduce it's width
+  in figure~\ref{bp4spectrum}.
   \begin{figure}[!htb]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/bp3spectrum.png}
@@ -257,43 +301,7 @@
       \label{fig:bp4inverse}
     \endminipage
   \end{figure}
-  When we only take the lower frequencies and zero out the higher
-  frequencies in the Fourier Transform image, we obtain the
-  following:
-
-  Notice here in the Fourier Transform image we have the brightest
-  spot preserved.  However, we did lose quite a bit of high
-  frequency and even some of the lower frequencies.  Many of the
-  bright spots in the original Fourier Transform image is lost.
-  This is why the image after taking the inverse Fourier Transform
-  of the new Fourier Transform image is so blurry.  We lost too much
-  information in the Fourier Transform.
-
-  Earlier in this section we said that the magnitude of the Fourier
-  Transform told us how much of a frequency component was present in
-  the image.  This becomes apparent when we keep the high
-  frequencies but zero out the lower frequencies in the Fourier
-  Transform.  The following is shown in the images below:
-
-  Since the lower frequencies contain more information, the color of
-  the image is mostly lost.  However, because we preserved the phase
-  and still have the higher frequencies, we are able to obtain an
-  outline of an image.  This is known as edge detection as the
-  Fourier Transform is able to show the highly contrasted color
-  changes of the original image.
-
-  The following image takes out the low frequencies and the high
-  frequencies.  So within this band in the Fourier Transform shown
-  on the image on the right, it contains the information of the
-  original image shown on the left:
-
-  In the following image, we did the same thing.  However, this time
-  we decreased the size of the band in the Fourier Transform.  Note
-  that because the band is smaller, we have less information about
-  the image.  Therefore, the inverse Fourier Transform image below
-  is much blurrier than the inverse Fourier Transform of the image
-  above:
-
+   
   Note that the smaller band of higher frequency looks more similar
   to the larger band of higher frequency than the smaller band of
   lower frequency and the larger band of lower frequencies.  This is
