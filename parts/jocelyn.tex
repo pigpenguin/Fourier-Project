@@ -93,7 +93,7 @@
   to us is the magnitude.
 
   Let's look at an example.
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
   \minipage{0.32\textwidth}
     \includegraphics[width=\linewidth]{jocelyn/01/original.png}
     \caption{The Original Image}
@@ -129,7 +129,7 @@
   figure~\ref{fig:phaseonly} Note that because we
   preserved the phase, we know where each frequency should be
   located, therefore we will get an outline of the image.
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
   \minipage{0.32\textwidth}
     \includegraphics[width=\linewidth]{jocelyn/01/original.png}
     \caption{The Original Image}
@@ -174,7 +174,7 @@
   a few examples of manipulating the Fourier Transform and  showing
   what the results would be like if we were to take the inverse
   Fourier Transform back to the original image.
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/original.png}
       \caption{Original}
@@ -191,7 +191,7 @@
   frequencies in the Fourier Transform image, we obtain the spectrum
   in figure~\ref{fig:lpspectrum} who's inverse fourier transform
   is shown in figure~\ref{fig:lpinverse}.
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/lpspectrum.png}
       \caption{Low Pass Spectrum}
@@ -218,7 +218,7 @@
   Transform. This effect is highlighted in figure~\ref{fig:hpinverse}
   which was obtained via the inverse of the spectrum shown in
   figure~\ref{fig:hpspectrum}.
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/hpspectrum.png}
       \caption{High Pass Spectrum}
@@ -242,7 +242,7 @@
   certain band limit.  So within this band in the Fourier
   Transform shown in figure~\ref{fig:bp1spectrum}, it becomes
   figure~\ref{fig:bp1inverse} after an inverse fourier transform.
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/bp1spectrum.png}
       \caption{Band Pass Spectrum}
@@ -262,7 +262,7 @@
   figure~\ref{fig:bp2inverse}
   is much blurrier than the inverse Fourier Transform of the image
   in figure~\ref{fig:bp1inverse}
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/bp2spectrum.png}
       \caption{Band Pass Spectrum}
@@ -278,7 +278,7 @@
   Finally we take a wide high frequency band limit in
   figure~\ref{fig:bp3spectrum} and then reduce it's width
   in figure~\ref{fig:bp4spectrum}.
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/bp3spectrum.png}
       \caption{Band Pass Spectrum}
@@ -290,7 +290,7 @@
       \label{fig:bp3inverse}
     \endminipage
   \end{figure}
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/bp4spectrum.png}
       \caption{Band Pass Spectrum}
@@ -323,7 +323,7 @@
   In the next example, I will be using figure~\ref{fig:sharporig}
   as the original photo while figure~\ref{fig:sharporigspectrum}
   is it's spectrum.
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/03/sharp/original.png}
       \caption{Original Image}
@@ -338,7 +338,7 @@
   Then we apply our filters to these images to obtain the sharpened
   image in figure~\ref{fig:sharpfiltered} with it's corresponding
   spectrum in figure~\ref{fig:sharpfilteredspectrum}
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/03/sharp/filtered.png}
       \caption{Filtered Image}
@@ -357,7 +357,7 @@
   multiplied by the Fourier Transform coefficients by 4.
 
   The Fourier Transform is also used to reduce noise.
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
   \minipage{0.32\textwidth}
     \includegraphics[width=\linewidth]{jocelyn/03/noise/original.png}
     \caption{Original Image}
@@ -385,7 +385,7 @@
   Therefore, in order to remove the noise, we must take out the
   cosine function.  So, we zero out the dots in the Fourier
   Transform.  When we do that, we get figures~\ref{fig:filterednoise}-\ref{fig:filteredzoom}
-  \begin{figure}[!htb]
+  \begin{figure}[htbp]
   \minipage{0.32\textwidth}
     \includegraphics[width=\linewidth]{jocelyn/03/noise/filtered.png}
     \caption{Filtered Image}

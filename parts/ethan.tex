@@ -1,5 +1,35 @@
 \documentclass [../article.tex]{subfiles}
 \begin{document}
-  Place holder for ethan's content
-  
+  \section{Signal Processing}
+  Let $x(t)$ be some signal and $X(\omega)$ be it's
+  spectrum, which is a map from a frequencey to it's
+  strength in the signal.
+
+  We can see that if you know $x(t)$ you can compute $X(\omega)$
+  and if you know $X(\omega)$ you can compute $x(t)$.
+  We will assume that your signal is band limited (no
+  frequencies above and below a certain threshold) and
+  nice enough to have a fourier series representation
+  (sound is always this nice).
+
+  Cool so the relation between $x(t)$ and $X(\omega)$ is:
+  \[x(t) = \frac{1}{2\pi}\int_{-\infty}^\infty
+  X(\omega)e^{it\omega}\,d\omega\]
+  However as we are band limited we know that if
+  $|\omega| > \frac{B}{2\pi}$ for some $B$ that
+  $X(\omega) = 0$ thus our integral becomes
+  \[x(t) = \frac{1}{2\pi}\int_{-2\pi B}^{2\pi B}
+  X(\omega)e^{it\omega}\,d\omega\]
+  Nearly done. All that is left is to sample our $x(t)$ at
+  regular intervals, for instance $\frac{n}{2B}$ where $n \in
+  \mathbb{Z}$.
+  \[x\left(\frac{n}{2B}\right) =
+  \int_{-2\pi B}^{2\pi B}X(\omega)e^{\frac{itn}{2B}}\,d\omega\]
+  This, however, is just the $n^{\text{th}}$ fourier coeffecient
+  of $X(\omega)$ so we have:
+  \[x\left(\frac{n}{2B}\right) = \hat{X}(n)\]
+  Thus if we sample our signal at regular intervals of
+  $n/2B$ we will get our fourier series for $X(n)$ which
+  uniquely determines $X(n)$ which uniquely determines $x(t)$.
+
 \end{document}
