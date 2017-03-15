@@ -5,9 +5,11 @@
   As we saw earlier, the Fourier Transform in audio signals takes
   a continuous time domain and converts it into a frequency domain.
   In image processing, the Fourier Transform converts a spatial
-  domain into a frequency domain (Smith 24).  The Fourier Transform
+  domain into a frequency domain\cite{smith_1997}.
+  The Fourier Transform
   in image processing allows us to access the geometric
-  characteristics of an image (Fisher 3).  By having access to the
+  characteristics of an image
+  \cite{fisher_perkins_walker_wolfart_2003}. By having access to the
   geometric characteristic, we are able to modify the image by
   changing some of those characteristics.
 
@@ -17,13 +19,14 @@
   manipulate an image. When we want to smooth, sharpen, and enhance
   an image, it is easier to take the Discrete Fourier Transform,
   apply the filters, and then take the inverse Discrete Fourier
-  Transform to obtain the image with the changes (Ludwig 3).  It
+  Transform to obtain the image with the changes\cite{ludwig}.  It
   is easier to apply the filter in the Discrete Fourier Transform
   because sharpening, enhancing, and smoothing an image are all
   consequences of convolution.  The Discrete Fourier Transform
   allows convolution to occur easier mathematically since
   convolution in the spatial domain becomes simply multiplication
-  in the frequency domain (Smith 24).  Therefore, applying filters
+  in the frequency domain \cite{smith_1997}.
+  Therefore, applying filters
   in the frequency domain is much easier than applying filters in
   the spatial domain.
 
@@ -85,7 +88,7 @@
 
   The magnitude tells us how much a certain frequency is present,
   while the phase tells us where the frequency is in the image
-  (Brayer 2).  Even though the phase typically holds more
+  \cite{brayer}.Even though the phase typically holds more
   information, we only display the magnitude image of the DFT.
   When applying filters, we do not want to change where the
   frequency is located, but manipulate the presence of the
@@ -125,7 +128,7 @@
   in order to obtain our image. Taking the inverse Discrete Fourier
   Transform of the phase without the magnitude, we will get an
   outline of what the image is without any other color detail
-  (Kundur 17-19). In our example, we would get the image in
+  \cite{kundur}. In our example, we would get the image in
   figure~\ref{fig:phaseonly} Note that because we
   preserved the phase, we know where each frequency should be
   located, therefore we will get an outline of the image.
@@ -157,11 +160,12 @@
   es while compressing high frequencies.  However, note that if
   an image contains important information in the higher
   frequencies, applying the logarithmic operator may lead
-  to information loss (Fisher 3).
+  to information loss \cite{fisher_perkins_walker_wolfart_2003}.
 
   In most Discrete Fourier Transform images, the Fourier image is
   shifted such that $F(0,0)$, the image mean, is centered in the
-  middle (Fisher 3).  Hence, the further from the origin, the
+  middle \cite{fisher_perkins_walker_wolfart_2003}. Hence, the
+  further from the origin, the
   higher the frequency, the lower the magnitude.  In all of the
   pictures of the Discrete Fourier Transform in image processing in
   this paper, we will shift the Fourier image such that the image
@@ -421,4 +425,5 @@
   the Fourier Transform.  We must preserve the phase as well.
   Preserving the phase of every image is important as the phase
   tells us where each frequency is located.
+
 \end{document}
