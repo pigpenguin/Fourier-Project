@@ -91,32 +91,63 @@
   frequency themselves.  Therefore, the information pertinent
   to us is the magnitude.
 
-  Let's look at an example. Here is the original image:
+  Let's look at an example.
 
-  The magnitude of the Fourier Transform of the image is:
+  \begin{figure}[!htb]
+  \minipage{0.32\textwidth}
+    \includegraphics[width=\linewidth]{jocelyn/01/original.png}
+    \caption{The Original Image}
+    \label{fig:original1}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}
+    \includegraphics[width=\linewidth]{jocelyn/01/mag.png}
+    \caption{Magnitude of our Transform}
+    \label{fig:mag1}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}%
+    \includegraphics[width=\linewidth]{jocelyn/01/phase.png}
+    \caption{Phase of our Transform}
+    \label{fig:phase1}
+  \endminipage
+  \end{figure}
 
-  The phase of the Fourier Transform is:
+  Figure~\ref{fig:original1} is our original image. While
+  figure~\ref{fig:mag1} and figure~\ref{fig:phase1} show the
+  magnitude and phase of the Fourier Transform respectively.
 
   Even though the information pertinent to us is the magnitude,
   we do not want to just ignore the phase. We want to preserve
   the phase because that contains important information of where
   each frequency is located. Without the phase, our image will be
   corrupted.  In our example, if we only reconstructed the image
-  using the magnitude, we would end up with the following:
-
+  using the magnitude, we would end up with figure~\ref{fig:magonly}.
   Therefore, even though the magnitude contains the most
   information, we still must protect and preserve the phase
-  in order to obtain our image.
+  in order to obtain our image. Taking the inverse Discrete Fourier
+  Transform of the phase without the magnitude, we will get an
+  outline of what the image is without any other color detail
+  (Kundur 17-19). In our example, we would get the image in
+  figure~\ref{fig:phaseonly} Note that because we 
+  preserved the phase, we know where each frequency should be
+  located, therefore we will get an outline of the image.
 
-  Taking the inverse Discrete Fourier Transform of the phase
-  without the magnitude, we will get an outline of what the image
-  is without any other color detail (Kundur 17-19). In our example,
-  we would get the following if we only reconstructed the image
-  with the phase:
-
-  Note that because we preserved the phase, we know where each
-  frequency should be located, therefore we will get an outline
-  of the image.
+  \begin{figure}[!htb]
+  \minipage{0.32\textwidth}
+    \includegraphics[width=\linewidth]{jocelyn/01/original.png}
+    \caption{The Original Image}
+    \label{fig:original1_}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}
+    \includegraphics[width=\linewidth]{jocelyn/01/magonly.png}
+    \caption{Inverse of Magnitude Only}
+    \label{fig:magonly}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}%
+    \includegraphics[width=\linewidth]{jocelyn/01/phaseonly.png}
+    \caption{Inverse of Phase Only}
+    \label{fig:phaseonly}
+  \endminipage
+  \end{figure}
 
   The results of the Discrete Fourier Transform show an image
   that contains components of all frequencies.  The higher the
@@ -226,19 +257,19 @@
   Transform.  Therefore, the original image is smoother than before.
 
   The Fourier Transform in image processing allows us to change some
-  characteristics of an image in the spatial domain.  By taking the 
-  Fourier Transform of every row of an N x N image and taking the 
-  Fourier Transform of every column, we are able to obtain a formula 
-  to calculate the Fourier Transform of a 2D image.  By taking the 
-  magnitude, we can display the Fourier Transform image.  In order 
-  to change the characteristics of an image in the spatial domain, 
-  we use the multiplication operator in the frequency domain. 
-  Sometimes we multiply the Fourier coefficients by zero in certain 
-  frequencies in order to remove those frequencies.  By doing so, we 
-  can smooth out an image.  By strategically multiplying certain 
-  Fourier coefficients in the frequency domain, we are able to 
-  enhance images.  However, we cannot just focus on the magnitude of 
-  the Fourier Transform.  We must preserve the phase as well.  
-  Preserving the phase of every image is important as the phase 
-  tells us where each frequency is located. 
+  characteristics of an image in the spatial domain.  By taking the
+  Fourier Transform of every row of an N x N image and taking the
+  Fourier Transform of every column, we are able to obtain a formula
+  to calculate the Fourier Transform of a 2D image.  By taking the
+  magnitude, we can display the Fourier Transform image.  In order
+  to change the characteristics of an image in the spatial domain,
+  we use the multiplication operator in the frequency domain.
+  Sometimes we multiply the Fourier coefficients by zero in certain
+  frequencies in order to remove those frequencies.  By doing so, we
+  can smooth out an image.  By strategically multiplying certain
+  Fourier coefficients in the frequency domain, we are able to
+  enhance images.  However, we cannot just focus on the magnitude of
+  the Fourier Transform.  We must preserve the phase as well.
+  Preserving the phase of every image is important as the phase
+  tells us where each frequency is located.
 \end{document}
