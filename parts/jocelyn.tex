@@ -301,7 +301,7 @@
       \label{fig:bp4inverse}
     \endminipage
   \end{figure}
-   
+
   Note that the smaller band of higher frequency looks more similar
   to the larger band of higher frequency than the smaller band of
   lower frequency and the larger band of lower frequencies.  This is
@@ -319,12 +319,36 @@
   won’t be omitting many important frequencies, but enhancing and
   sharpening them.
 
-  In the next example, I will be using the following as the original
-  image and the Fourier Transform of that image:
-
-  The following image is the sharpened image and the Fourier
-  Transform of the sharpened image:
-
+  In the next example, I will be using figure~\ref{fig:sharporig}
+  as the original photo while figure~\ref{fig:sharporigspectrum}
+  is it's spectrum.
+  \begin{figure}[!htb]
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/03/sharp/original.png}
+      \caption{Original Image}
+      \label{fig:sharporig}
+    \endminipage\hfill
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/03/sharp/originalspectrum.png}
+      \caption{Original Spectrum}
+      \label{fig:sharporigspectrum}
+    \endminipage
+  \end{figure}
+  Then we apply our filters to these images to obtain the sharpened
+  image in figure~\ref{fig:sharpfiltered} with it's corresponding
+  spectrum in figure~\ref{fig:sharpfilteredspectrum}
+  \begin{figure}[!htb]
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/03/sharp/filtered.png}
+      \caption{Filtered Image}
+      \label{fig:sharpfiltered}
+    \endminipage\hfill
+    \minipage{0.4\textwidth}
+      \includegraphics[width=\linewidth]{jocelyn/03/sharp/filteredspectrum.png}
+      \caption{Filtered Spectrum}
+      \label{fig:sharpfilteredspectrum}
+    \endminipage
+  \end{figure}
   Notice that the frequencies of the higher magnitude frequencies
   are lighter than the original high frequencies in the original
   Fourier Transform image.  In order to obtain this, we kept the
@@ -332,19 +356,51 @@
   multiplied by the Fourier Transform coefficients by 4.
 
   The Fourier Transform is also used to reduce noise.
-
-  In the image above, we have a picture of goofy (left picture).  He
+  \begin{figure}[!htb]
+  \minipage{0.32\textwidth}
+    \includegraphics[width=\linewidth]{jocelyn/03/noise/original.png}
+    \caption{Original Image}
+    \label{fig:orignoise}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}
+    \includegraphics[width=\linewidth]{jocelyn/03/noise/originalspectrum.png}
+    \caption{Original Spectrum}
+    \label{fig:orignoisespectrum}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}%
+    \includegraphics[width=\linewidth]{jocelyn/03/noise/originalspectrumzoom.png}
+    \caption{Zoomed Spectrum}
+    \label{fig:origzoomed}
+  \endminipage
+  \end{figure}
+  In figure~\ref{fig:orignoise}, we have a picture of goofy. He
   has a cosine function embedded in him, which is why we have the
-  “noise” or the rolls in the image. The cosine function can be seen
-  in the Fourier Transform image (the center image).  The center of
+  ``noise'' or the rolls in the image. The cosine function can
+  be seen in the Fourier Transform image
+  (figure~\ref{fig:orignoisespectrum}).  The center of
   the Fourier Transform image has three bright dots.  In order to
   see the cosine function more clearly in the Fourier Transform, we
-  zoomed in on the center of the Fourier Transform (the picture on
-  the right).  The outer dots represent the cosine function.
+  zoomed in on the center of the Fourier Transform (figure~\ref{fig:origzoomed}).  The outer dots represent the cosine function.
   Therefore, in order to remove the noise, we must take out the
   cosine function.  So, we zero out the dots in the Fourier
-  Transform.  When we do that, we get the following:
-
+  Transform.  When we do that, we get figures~\ref{fig:filterednoise}-\ref{fig:filteredzoom}
+  \begin{figure}[!htb]
+  \minipage{0.32\textwidth}
+    \includegraphics[width=\linewidth]{jocelyn/03/noise/filtered.png}
+    \caption{Filtered Image}
+    \label{fig:filterednoise}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}
+    \includegraphics[width=\linewidth]{jocelyn/03/noise/filteredspectrum.png}
+    \caption{Filtered Spectrum}
+    \label{fig:filteredspectrum}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}%
+    \includegraphics[width=\linewidth]{jocelyn/03/noise/filteredspectrumzoom.png}
+    \caption{Zoomed Spectrum}
+    \label{fig:filteredzoom}
+  \endminipage
+  \end{figure}
   Notice that the outer bright dots are removed from the Fourier
   Transform.  Therefore, the original image is smoother than before.
 
