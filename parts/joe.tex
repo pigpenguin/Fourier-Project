@@ -29,7 +29,7 @@ Let $z$ $\in \mathbb{Z}(N)$. Then, $z^N = (r \cdot e^{i \theta})^N = 1$. Therefo
 	{} &= 1
 \end{align*}
 Therefore, $\zeta^k \in \mathbb{Z}(N)$ for all $k$ such that $0 \leq k \leq N-1$. Notice that the set $Q = \{0, 1, 2, \ldots, N-1\}$ is a residue system modulo $N$, and that the set $\zeta^Q = \left\{1, e^{2 \pi i/N}, e^{4 \pi i/N}, \ldots, e^{2(N-1) \pi i/N}\right\} \subseteq \mathbb{Z}(N) $.
-Now, for every $n \in \mathbb{Z}$, there exists an integer $m \in Q$ such that $n \equiv m \mod N$, since $Q$ is a complete residue system modulo $N$. When $k \geq N-1$, we have that $k \equiv l$ mod $N$ for some $l \in Q$. Therefore, $\mathbb{Z}(N) \subseteq Q$, and since we know $Q \subseteq Z(N)$, we have $Q = Z(N)$.
+Now, for every $n \in \mathbb{Z}$, there exists an integer $m \in Q$ such that $n \equiv m \mod N$, since $Q$ is a complete residue system modulo $N$. When $k \geq N-1$, we have that $k \equiv l \mod N$ for some $l \in Q$. Therefore, $\mathbb{Z}(N) \subseteq Q$, and since we know $Q \subseteq Z(N)$, we have $Q = Z(N)$.
 \end{proof}
 
 \begin{theorem}
@@ -37,7 +37,7 @@ $\mathbb{Z}(N)$ is a finite abelian group.
 \end{theorem}
 
 \begin{proof}
-That $| \mathbb{Z}(N)| < \infty$ is self-edvident. Thus, $\mathbb{Z}(N)$ is a finite group. Letting $z,w \in \mathbb{Z}(N)$, we find that $z \cdot w = e^{2 \pi i (k+l)/N}$ for some $k,l \in \mathbb{Z}$. Then, by the complete residue theorem of number theory, there exists an $m \in \{1, 2, 3, ..., N-1\}$ such that $(k+l) \equiv m$ mod $N$. Hence, $e^{2 \pi i (k+l)/N} = e^{2 \pi i m/N} \in \mathbb{Z}(N)$. Therefore, $\mathbb{Z}(N)$ is closed under complex multiplication.
+That $| \mathbb{Z}(N)| < \infty$ is self-edvident. Thus, $\mathbb{Z}(N)$ is a finite group. Letting $z,w \in \mathbb{Z}(N)$, we find that $z \cdot w = e^{2 \pi i (k+l)/N}$ for some $k,l \in \mathbb{Z}$. Then, by the complete residue theorem of number theory, there exists an $m \in \{1, 2, 3, ..., N-1\}$ such that $(k+l) \equiv m \mod N$. Hence, $e^{2 \pi i (k+l)/N} = e^{2 \pi i m/N} \in \mathbb{Z}(N)$. Therefore, $\mathbb{Z}(N)$ is closed under complex multiplication.
 
 Let $z,w \in \mathbb{Z}(N)$. Then $z \cdot w = e^{2 \pi i k/N} \cdot e^{2 \pi i l/N} = e^{2 \pi i (k+l)/N} = e^{2 \pi i (l+k)/N} = e^{2 \pi i l/N} \cdot e^{2 \pi i k/N} = w \cdot z$. Therefore $(\mathbb{Z}(N), \cdot)$ is commutative.
 
@@ -51,13 +51,13 @@ Therefore, $\mathbb{Z}(N)$ is an abelian group.
 \end{proof}
 
 \begin{definition}
-For all $x \in \mathbb{Z}$, let $R_N (x) = \{y \in \mathbb{Z} : y \equiv x  $ mod $  N\}$, where $N \in \mathbb{Z}$
+For all $x \in \mathbb{Z}$, let $R_N (x) = \{y \in \mathbb{Z} : y \equiv x   \mod   N\}$, where $N \in \mathbb{Z}$
 \end{definition}
 \begin{theorem}
 For all $x,y \in \mathbb{Z}$, $R_N (x) + R_N (y) = R_N (x+y).$
 \end{theorem}
 \begin{proof}
-Let $\alpha \in R_N (x)$ and $\beta \in R_N (y)$. Then, $\alpha = x +kN$ for some $k \in \mathbb{Z}$ and $\beta = y + lN$ for some $l \in \mathbb{Z}$. Then, $(x+y)+(k+l)N \in R_N (x+y)$. Conversely, let $x+y \in R_N (x+y)$. Then, $x = \alpha -kN$ and $y = \beta -lN$. Therefore, $(x+y) = (\alpha + \beta) -(k+l)N$. Therefore, $(x+y) \equiv \alpha +\beta)$ mod $N$. Therefore, $x \equiv \alpha$ mod $N$ and $y \equiv \beta$ mod $N$. Therefore, $x+y \in R_N (x) + R_N (y)$.
+Let $\alpha \in R_N (x)$ and $\beta \in R_N (y)$. Then, $\alpha = x +kN$ for some $k \in \mathbb{Z}$ and $\beta = y + lN$ for some $l \in \mathbb{Z}$. Then, $(x+y)+(k+l)N \in R_N (x+y)$. Conversely, let $x+y \in R_N (x+y)$. Then, $x = \alpha -kN$ and $y = \beta -lN$. Therefore, $(x+y) = (\alpha + \beta) -(k+l)N$. Therefore, $(x+y) \equiv \alpha +\beta) \mod N$. Therefore, $x \equiv \alpha \mod N$ and $y \equiv \beta \mod N$. Therefore, $x+y \in R_N (x) + R_N (y)$.
 \end{proof}
 
 \begin{theorem}
@@ -168,7 +168,7 @@ Therefore,
 \end{split}
 \end{equation}
 
-Now, for every $k \in \mathbb{Z}_{+}$ and fixed integer $t \in \mathbb{Z}_{+}$ there exist $unique$ integers $m$ and $s$ such that $k = mt +s$, where $0 \leq s < t-1$; i.e., $s \in R_{0}(t) = \{0, 1, ..., t-1\}$, where $R_{0}(t)$ is a complete residue system mod $t$. Therefore, by the property of complete residue systems mod $t$, for every integer $k \in \mathbb{Z}_{+}$, there exists an integer $s \in R_{0}(t)$ such that $k \equiv s$ mod $t$. Let $f(k,t)$ be some function of $k$ and $t$. By our preceding argument, there exist unique $m$ and $s$ in $\mathbb{Z}_{+}$ such that $k = mt +s$. Therefore,
+Now, for every $k \in \mathbb{Z}_{+}$ and fixed integer $t \in \mathbb{Z}_{+}$ there exist $unique$ integers $m$ and $s$ such that $k = mt +s$, where $0 \leq s < t-1$; i.e., $s \in R_{0}(t) = \{0, 1, ..., t-1\}$, where $R_{0}(t)$ is a complete residue system mod $t$. Therefore, by the property of complete residue systems mod $t$, for every integer $k \in \mathbb{Z}_{+}$, there exists an integer $s \in R_{0}(t)$ such that $k \equiv s \mod t$. Let $f(k,t)$ be some function of $k$ and $t$. By our preceding argument, there exist unique $m$ and $s$ in $\mathbb{Z}_{+}$ such that $k = mt +s$. Therefore,
 
 \begin{equation}
 \begin{split}
@@ -266,7 +266,7 @@ So,
 \end{split}
 \end{equation}
 
-since $r(2s-1) \equiv r$ mod $t$ implies that $\omega^{r(2s-1)} = \omega^{r}$ by Theorem 1. Similarly, $\omega^{-r(2s-1)} = \omega^{r}$ since $-r(2s-1) \equiv r$ mod $t$.
+since $r(2s-1) \equiv r \mod t$ implies that $\omega^{r(2s-1)} = \omega^{r}$ by Theorem 1. Similarly, $\omega^{-r(2s-1)} = \omega^{r}$ since $-r(2s-1) \equiv r \mod t$.
 \end{proof}
 
 We have shown that
