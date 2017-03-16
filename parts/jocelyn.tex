@@ -1,41 +1,32 @@
 \documentclass [../article.tex]{subfiles}
 \begin{document}
   \section{Image Processing}
+  
+  In addition to being able to analyze One-Dimensional (1D) signals such as sound, we can look at Two-Dimensional (2D) signals, like images. In this particular space we can convert to a frequency domain, analyze and edit the sinals in the frequency domain, and then convert the signals back. This allows us to isolate certain frequencies, apply filters cheaply, and remove noise.
+  
+  \subsection{Two Dimensional Fourier Transform} 
   The Fourier Transform converts a domain into a frequency domain.
   As we saw earlier, the Fourier Transform in audio signals takes
   a continuous time domain and converts it into a frequency domain.
   In image processing, the Fourier Transform converts a spatial
-  domain into a frequency domain\cite{smith_1997}.
-  The Fourier Transform
-  in image processing allows us to access the geometric
-  characteristics of an image
-  \cite{fisher_perkins_walker_wolfart_2003}. By having access to the
-  geometric characteristic, we are able to modify the image by
-  changing some of those characteristics.
+  domain into a frequency domain \cite{smith_1997}. The Fourier Transform in image processing allows us to access the geometric
+  characteristics of an image \cite{fisher_perkins_walker_wolfart_2003}. By having access to the geometric characteristic, we are able to modify the image by changing some of those characteristics.
 
   In order to modify the characteristics of an image, we apply
   filters. Most of the time we apply filters to the original
   image. However, this is not always the most efficient way to
   manipulate an image. When we want to smooth, sharpen, and enhance
-  an image, it is easier to take the Discrete Fourier Transform,
+  an image, it is easier to take the Discrete Fourier Transform (DFT),
   apply the filters, and then take the inverse Discrete Fourier
   Transform to obtain the image with the changes\cite{ludwig}.  It
-  is easier to apply the filter in the Discrete Fourier Transform
-  because sharpening, enhancing, and smoothing an image are all
-  consequences of convolution.  The Discrete Fourier Transform
-  allows convolution to occur easier mathematically since
-  convolution in the spatial domain becomes simply multiplication
-  in the frequency domain \cite{smith_1997}.
-  Therefore, applying filters
-  in the frequency domain is much easier than applying filters in
-  the spatial domain.
+  is easier to apply the filter in the DFT because sharpening, enhancing, and smoothing an image are all consequences of convolution.  The Discrete Fourier Transform allows convolution to occur easier mathematically since convolution in the spatial domain becomes simply multiplication in the frequency domain \cite{smith_1997}. Therefore, applying filters in the frequency domain is much easier than applying filters in the spatial domain.
 
   Because images are in two dimension, we cannot calculate the
   Fourier Transform using a one dimension formula, like we did in
   audio signals.  Therefore, we need to manipulate the Fourier
   Transform formula to take care of this extra dimension.
 
-  The one dimensional (1D) Discrete Fourier Transform formula is:
+  The 1D Discrete Fourier Transform formula is:
   \[ F(k) = \sum_{x=0}^{N-1}f(x)e^{-i2\pi kx/N} \]
   We take the DFT of the rows, $F(k)$, and then the DFT of the
   columns, $F(l)$:
@@ -55,7 +46,7 @@
     e^{-i(kx+ly)2\pi/N }
   \end{align*}
 
-  Therefore, we get the 2 dimensional (2D) Discrete Fourier
+  Therefore, we get the 2D Discrete Fourier
   Transform formula:
   \[\sum_{x=0}^{N-1}\sum_{y=0}^{N-1}f(x,y)e^{-i(kx+ly)2\pi/N}\]
   where $f(x,y)$ is the image of the spatial domain.
@@ -65,8 +56,8 @@
   add the necessary 0 vectors in either the rows or columns
   until it is.
 
-  Similarly, we can derive the 2D inverse DFT formula from the
-  1D inverse DFT formula:
+  Similarly, we can derive the 2D Inverse DFT formula from the
+  1D Inverse DFT formula:
   \[f(x,y) = \frac{1}{N^2}\sum_{k=0}^{N-1}\sum_{l=0}^{N-1}
     F(k,l)e^{i2\pi(kx/N+ly/N)}\]
   Note the presence of $1/N^2$. This is sometimes present
@@ -80,11 +71,11 @@
   the DFT using magnitude and phase.
 
   The magnitude can be calculated by:
-  \[\text{Mag}(F) = \sqrt{\text{Real}(F)^2 + \text{Imaginary}(F)^2}\]
+  \[|F| = \sqrt{\Re(F)^2 + \Im(F)^2}\]
 
   The phase can be calculated by:
   \[\text{Phase}(F) = \arctan\left(
-  \frac{\text{Imaginary(F)}}{\text{Real(F)}}\right)\]
+  \frac{\Im (F)}{\Re (F)}\right)\]
 
   The magnitude tells us how much a certain frequency is present,
   while the phase tells us where the frequency is in the image
@@ -114,7 +105,7 @@
   \endminipage
   \end{figure}
   Figure~\ref{fig:original1} is our original image. While
-  figures~\ref{fig:mag1} and \ref{fig:phase1} show the
+  Figures~\ref{fig:mag1} and \ref{fig:phase1} show the
   magnitude and phase of the Fourier Transform respectively.
 
   Even though the information pertinent to us is the magnitude,
@@ -122,14 +113,14 @@
   the phase because that contains important information of where
   each frequency is located. Without the phase, our image will be
   corrupted.  In our example, if we only reconstructed the image
-  using the magnitude, we would end up with figure~\ref{fig:magonly}.
+  using the magnitude, we would end up with Figure~\ref{fig:magonly}.
   Therefore, even though the magnitude contains the most
   information, we still must protect and preserve the phase
   in order to obtain our image. Taking the inverse Discrete Fourier
   Transform of the phase without the magnitude, we will get an
   outline of what the image is without any other color detail
   \cite{kundur}. In our example, we would get the image in
-  figure~\ref{fig:phaseonly} Note that because we
+  Figure~\ref{fig:phaseonly} Note that because we
   preserved the phase, we know where each frequency should be
   located, therefore we will get an outline of the image.
   \begin{figure}[htbp]
@@ -165,18 +156,12 @@
   In most Discrete Fourier Transform images, the Fourier image is
   shifted such that $F(0,0)$, the image mean, is centered in the
   middle \cite{fisher_perkins_walker_wolfart_2003}. Hence, the
-  further from the origin, the
-  higher the frequency, the lower the magnitude.  In all of the
-  pictures of the Discrete Fourier Transform in image processing in
-  this paper, we will shift the Fourier image such that the image
-  mean is centered in the middle.  All Discrete Fourier Transform
-  images will also represent the logarithmic of the magnitude of the
-  Fourier Transform in 2D as well.
+  further from the origin, the higher the frequency, the lower the magnitude.  In all of the pictures of the Discrete Fourier Transform in image processing in this paper, we will shift the Fourier image such that the image mean is centered in the middle.  All Discrete Fourier Transform images will also represent the logarithmic of the magnitude of the Fourier Transform in 2D as well.
 
   The purpose of using Fourier Transform in image processing is to
   apply filters in order to change the original image.  I will give
   a few examples of manipulating the Fourier Transform and  showing
-  what the results would be like if we were to take the inverse
+  what the results would be like if we were to take the Inverse
   Fourier Transform back to the original image.
   \begin{figure}[htbp]
     \minipage{0.4\textwidth}
@@ -193,8 +178,8 @@
 
   When we only take the lower frequencies and zero out the higher
   frequencies in the Fourier Transform image, we obtain the spectrum
-  in figure~\ref{fig:lpspectrum} who's inverse fourier transform
-  is shown in figure~\ref{fig:lpinverse}.
+  in Figure~\ref{fig:lpspectrum} who's Inverse Fourier Transform
+  is shown in Figure~\ref{fig:lpinverse}.
   \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/lpspectrum.png}
@@ -219,9 +204,9 @@
   Transform told us how much of a frequency component was present in
   the image.  This becomes apparent when we keep the high
   frequencies but zero out the lower frequencies in the Fourier
-  Transform. This effect is highlighted in figure~\ref{fig:hpinverse}
+  Transform. This effect is highlighted in Figure~\ref{fig:hpinverse}
   which was obtained via the inverse of the spectrum shown in
-  figure~\ref{fig:hpspectrum}.
+  Figure~\ref{fig:hpspectrum}.
   \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/hpspectrum.png}
@@ -245,7 +230,7 @@
   The following images take out frequencies above and below a
   certain band limit.  So within this band in the Fourier
   Transform shown in figure~\ref{fig:bp1spectrum}, it becomes
-  figure~\ref{fig:bp1inverse} after an inverse fourier transform.
+  Figure~\ref{fig:bp1inverse} after an Inverse Fourier Transform.
   \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/bp1spectrum.png}
@@ -262,10 +247,10 @@
   In the following image, we did the same thing.  However, this time
   we decreased the size of the band in the Fourier Transform.  Note
   that because the band is smaller, we have less information about
-  the image.  Therefore, the inverse Fourier Transform image in
+  the image.  Therefore, the Inverse Fourier Transform image in
   figure~\ref{fig:bp2inverse}
-  is much blurrier than the inverse Fourier Transform of the image
-  in figure~\ref{fig:bp1inverse}
+  is much blurrier than the Inverse Fourier Transform of the image
+  in Figure~\ref{fig:bp1inverse}
   \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/bp2spectrum.png}
@@ -280,8 +265,8 @@
   \end{figure}
 
   Finally we take a wide high frequency band limit in
-  figure~\ref{fig:bp3spectrum} and then reduce it's width
-  in figure~\ref{fig:bp4spectrum}.
+  Figure~\ref{fig:bp3spectrum} and then reduce it's width
+  in Figure~\ref{fig:bp4spectrum}.
   \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/02/bp3spectrum.png}
@@ -324,8 +309,8 @@
   won’t be omitting many important frequencies, but enhancing and
   sharpening them.
 
-  In the next example, I will be using figure~\ref{fig:sharporig}
-  as the original photo while figure~\ref{fig:sharporigspectrum}
+  In the next example, I will be using Figure~\ref{fig:sharporig}
+  as the original photo while Figure~\ref{fig:sharporigspectrum}
   is it's spectrum.
   \begin{figure}[htbp]
     \minipage{0.4\textwidth}
@@ -340,8 +325,8 @@
     \endminipage
   \end{figure}
   Then we apply our filters to these images to obtain the sharpened
-  image in figure~\ref{fig:sharpfiltered} with it's corresponding
-  spectrum in figure~\ref{fig:sharpfilteredspectrum}
+  image in Figure~\ref{fig:sharpfiltered} with it's corresponding
+  spectrum in Figure~\ref{fig:sharpfilteredspectrum}
   \begin{figure}[htbp]
     \minipage{0.4\textwidth}
       \includegraphics[width=\linewidth]{jocelyn/03/sharp/filtered.png}
@@ -382,13 +367,13 @@
   has a cosine function embedded in him, which is why we have the
   ``noise'' or the rolls in the image. The cosine function can
   be seen in the Fourier Transform image
-  (figure~\ref{fig:orignoisespectrum}).  The center of
+  (Figure~\ref{fig:orignoisespectrum}).  The center of
   the Fourier Transform image has three bright dots.  In order to
   see the cosine function more clearly in the Fourier Transform, we
-  zoomed in on the center of the Fourier Transform (figure~\ref{fig:origzoomed}).  The outer dots represent the cosine function.
+  zoomed in on the center of the Fourier Transform (Figure~\ref{fig:origzoomed}).  The outer dots represent the cosine function.
   Therefore, in order to remove the noise, we must take out the
   cosine function.  So, we zero out the dots in the Fourier
-  Transform.  When we do that, we get figures~\ref{fig:filterednoise}-\ref{fig:filteredzoom}
+  Transform.  When we do that, we get Figures~\ref{fig:filterednoise}-\ref{fig:filteredzoom}
   \begin{figure}[htbp]
   \minipage{0.32\textwidth}
     \includegraphics[width=\linewidth]{jocelyn/03/noise/filtered.png}

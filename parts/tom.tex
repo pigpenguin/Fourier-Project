@@ -4,17 +4,17 @@
 \begin{document}
 \section{FFT with Application on Polynomial Multiplication}
 \subsection{Introduction}
-The fast Fourier transform (FFT) is a name given to any algorithm that is able to compute the discrete Fourier transform (DFT) of a function over the $N^{th}$ roots of unity in $O(N\log_2{N})$ time with regards to addition and multiplication of complex numbers. It is \emph{fast} in the sense that under general settings to compute the DFT of any given function, one has to compute and multiply with their respective frequencies $N$ Fourier coefficients. With each coefficient being a sum of $N$ products of multiplications, this computation effectively takes $O(N^2)$ operations. This improvement in efficiency is achieved through realizing properties of the $N^{th}$ roots of unity such that redundant calculations would be eliminated and thereby giving us the speed-up we desire. In this section we will first show the significance of a fast polynomial multiplication algorithm and then generalize it to the case of FFT.
+The Fast Fourier transform (FFT) is a name given to any algorithm that is able to compute the Discrete Fourier transform (DFT) of a function over the $N^{th}$ roots of unity in $O(N\log_2{N})$ time with regards to addition and multiplication of complex numbers. It is \emph{fast} in the sense that under general settings to compute the DFT of any given function, one has to compute and multiply with their respective frequencies $N$ Fourier coefficients. With each coefficient being a sum of $N$ products of multiplications, this computation effectively takes $O(N^2)$ operations. This improvement in efficiency is achieved through realizing properties of the $N^{th}$ roots of unity such that redundant calculations would be eliminated and thereby giving us the efficiency we desire. In this section we will first show the significance of a fast polynomial multiplication algorithm and then generalize it to the case of FFT.
 
 \subsection{Operations on Polynomials in Different Forms}
-The main purpose of this subsection is to provide an overview on the pros and cons of doing polynomial operations in different representations and see if we could find the most efficient method of doing these operations. In the following subsections we will devise an algorithm which will complete our search for efficiency. We first start by going over the operations we will cover on any degree $n-1$ polynomial of the general form $P(x) = \sum_{i=0}^{n-1} p_ix^i$ for scalars $(p_i)_{i=0}^{n-1}$.
+The main purpose of this subsection is to provide an overview on the pros and cons of doing polynomial operations in different representations and see if we could find the most efficient method of doing these operations. In the following subsections, we will devise an algorithm which will complete our search for efficiency. We first start by going over the operations we will cover on any degree $n-1$ polynomial of the general form $P(x) = \sum_{i=0}^{n-1} p_ix^i$ for scalars $(p_i)_{i=0}^{n-1}$.
 
 \begin{itemize}
 \item{\textbf{Evaluation:}} Given a polynomial $P(x)$ we can evaluate it at point $x$ by feeding it $x$ to receive an output $y$.
 
 \item{\textbf{Addition:}} Given two polynomials $A(x) = \sum_{i=0}^{n-1} a_ix^i$ and $B(x) = \sum_{i=0}^{n-1} b_ix^i$ we can add them together to obtain a third polynomial $C(x) = \sum_{i=0}^{n-1} (a_i+b_i)x^i = \sum_{i=0}^{n-1} c_ix^i$.
 
-\item {\textbf{Multiplication:}} Given two polynomials $A(x)$ and $B(x)$ as described above, we can most certainly multiply them for a third polynomial $C(x) = \sum_{i=0}^{2(n-1)} c_ix^i$ where $c_i = \sum_{j=0}^{i} a_jb_{i-j}$. Note that this multiplication defines a vector $(c_0, c_1, ..., c_{2(n-1)})$ which describes exactly the convolution of $(a_0,..., a_n)$ and $(b_0, ..., b_n)$ with respect to their inner products. What this implies is that if we can multiply polynomials efficiently, we can convolute vectors efficiently, and thereby process signals efficiently given their vector forms.
+\item {\textbf{Multiplication:}} Given two polynomials $A(x)$ and $B(x)$ as described above, we can most certainly multiply them for a third polynomial $C(x) = \sum_{i=0}^{2(n-1)} c_ix^i$ where $c_i = \sum_{j=0}^{i} a_jb_{i-j}$. Note that this multiplication defines a vector $(c_0, c_1, ..., c_{2(n-1)})$ which describes exactly the convolution of $(a_0,..., a_n)$ and $(b_0, ..., b_n)$ with respect to their inner products. What this implies is that if we can multiply polynomials efficiently, we can convolute vectors efficiently, and therefore, process signals efficiently given their vector forms.
 \end{itemize}
 
 To optimize the computational time of these three operations it is helpful to see what different representations of polynomials could provide for our purpose. There are namely three ways of preserving the information contained in a polynomial which are listed below.
@@ -24,7 +24,7 @@ To optimize the computational time of these three operations it is helpful to se
 
 \item{\textbf{Roots:}} If we know all roots of a polynomial along with a scalar constant surely we can construct the polynomial as a product of $(x-r_i)$'s multiplied by the constant $c$ with each $r_i$ being a root of the polynomial, as guaranteed by the fundamental theorem of algebra. E.g. the polynomial $P(x) = 4x^3-24x^2+44x-24$ could be written as $P(x) = 4(x-3)(x-2)(x-1)$.
 
-\item{\textbf{Samples:}} A sample of a polynomial $P(x)$ is an ordered pair $(x_i,y_i)$ where $y_i = P(x_i)$. Say $P(x)$ has degree $n-1$, then we require exactly $n$ distinct samples to be able to uniquely determine a $P(x)$ that is coherent with our $n$ samples. This could be accomplished through Lagrange's polynomial interpolation or solving a simple system of equations. E.g. if given three distinct samples $(x_i,y_i)$ we could uniquely determine a polynomial by solving the system
+\item{\textbf{Samples:}} A sample of a polynomial $P(x)$ is an ordered pair $(x_i,y_i)$, where $y_i = P(x_i)$. Say $P(x)$ has degree $n-1$, then we require exactly $n$ distinct samples to be able to uniquely determine a $P(x)$ that is coherent with our $n$ samples. This could be accomplished through Lagrange's polynomial interpolation or solving a simple system of equations. E.g. if given three distinct samples $(x_i,y_i)$ we could uniquely determine a polynomial by solving the system
 \begin{equation*}
 \begin{pmatrix}
 1 & x_1 & x_1^2\\
@@ -53,13 +53,15 @@ For the following estimates we will assume our polynomials are of degree $n-1$.
 
 We start with polynomial evaluation. In coefficient form to evalute a polynomial at point $x$ will take at most $O(n)$ calculations using Horner's rule. Simply put, calculate and record each power of $x$ by multiplying $x$ with itself $n-1$ times, then multiplying each power of $x$ with the corresponding coefficient takes another $n$ multiplications, finally adding them together takes at most $n-1$ additions, so we would end up doing $3n-2$ operations which is in the order of linear time $O(n)$. Evaluation with roots is also in linear time, as each $(x-r_i)$ can be calculated with a single addition and multiplying $n-1$ of them together with a constant will take us $n-1$ multiplications. However with samples, to evalute the polynomial we would first have to recover the polynomial through interpolation and then evaluate. The bottleneck here rests on the interpolation step which takes $O(n^2)$ calculations to compute, as can be visualized from the example of solving a system of linear equations given above.
 
-Polynomial addition is straight forward in coefficient form, since it can be computed by simply adding the two coefficient vectors together which would take $O(n)$ computations. Addition with only the roots of two polynomials is extremely difficult, and conversion to other forms would be impossible if we want to end up with the roots of the sum, so we do not consider it as a feasible approach in this paper. Addition with samples, however, takes only linear time. The sum of two polynomials evaluated at one point is simply the sum of the values of both polynomials evaluated at that point. Hence for $n$ samples, performing addition takes $O(n)$ calculations.
+Polynomial addition is straight forward in coefficient form, since it can be computed by simply adding the two coefficient vectors together which would take $O(n)$ computations. Addition with only the roots of two polynomials is extremely difficult, and conversion to other forms would be impossible if we want to end up with the roots of the sum, so we do not consider it as a feasible approach in this paper. Addition with samples, however, takes only linear time. The sum of two polynomials evaluated at one point is simply the sum of the values of both polynomials evaluated at that point. Hence, $n$ samples performing addition takes $O(n)$ calculations.
 
-Multiplication with coefficients would take $O(n^2)$ computations as it can be written as a double summation given earlier. With roots, one simply concatenate the $(x-r_i)$'s together, which takes $O(n)$ concatenations. With samples it takes only $O(n)$ operations as well, since multiplying the second entry of both samples at the same point accomplishes polynomial multiplication.
+Multiplication with coefficients would take $O(n^2)$ computations as it can be written as a double summation, which was given earlier. With roots, one simply concatenate the $(x-r_i)$'s together, which takes $O(n)$ concatenations. With samples it takes only $O(n)$ operations as well, since multiplying the second entry of both samples at the same point accomplishes polynomial multiplication.
 
 To summarize, we have the following chart that lists the computational complexities we have considered thus far.
 
-
+\begin{table}[htb]
+\begin{center}
+\caption{Computational complexity by representation}\label{tab:complexity}
 \begin{tabular}{lccc}
 
 &Coefficients&Roots&Samples\\
@@ -69,10 +71,15 @@ Evaluation&$O(n)$&$O(n)$&$O(n^2)$\\
 Addition&$O(n)$&N/A&$O(n)$\\
 \hline
 Multiplication&$O(n^2)$&$O(n)$&$O(n)$\\
+
 \end{tabular}
+\end{center}
+
+
+\end{table}
 \medskip
 
-As the chart shows, no representation is perfect and there is a price to be paid no matter which representation one adopts. However, what if there is a method of efficiently converting between representations such that it would make sense to convert and perform the opertaion rather than accepting the fate of an undesirable $O(n^2)$ complexity? Indeed, if conversion could cost significantly less, we would be able to save quite some time. Luckily, it is possible to convert between  coefficient form and sample form efficiently in $O(n\log_2{n})$ time, as we will show in the following subsections.
+As Table~\ref{tab:complexity} shows, no representation is perfect and there is a price to be paid no matter which representation one adopts. However, what if there is a method of efficiently converting between representations such that it would make sense to convert and perform the opertaion rather than accepting the fate of an undesirable $O(n^2)$ complexity? Indeed, if conversion could cost significantly less, we would be able to save quite some time. Luckily, it is possible to convert between  coefficient form and sample form efficiently in $O(n\log_2{n})$ time, as we will show in the following subsections.
 
 \subsection{From Coefficients to Samples}
 Our objective in this section is to find an algorithm which can convert coefficient vectors into a set of samples efficiently so that we may employ this conversion as an escape route from the horrid $O(n^2)$ runtime it requries to perform polynomial multiplication.
@@ -177,7 +184,7 @@ T(n, |X|) &=& 2^{\log_2{n}}T(1,|X^n|)+\sum_{l=0}^{(\log_2{n})-1}2^lO(|X|)\\
 &=& n+O(n\log_2{n})\\
 &=& O(n\log_2{n})
 \end{eqnarray*}
-which is exactly the efficient conversion from coefficient vectors into samples we were looking for.
+which is exactly the efficient conversion from coefficient vectors to samples we were looking for.
 
 This algorithm will enable us to convert two polynomials $A(x)$ and $B(x)$ from coefficient vectors into samples in $2O(n\log_2{n})$ time and perform multiplication in $O(n)$ time.
 
@@ -240,12 +247,12 @@ What this gives us is a way of convoluting two signals or waves represented by p
 \subsection{The Fast Fourier Transform}
 
 
-The discrete Fourier transform as described in \cite{stein_shakarchi_2003} is given by
+The Inverse Fourier transform as described in \cite{stein_shakarchi_2003} is given by
 \begin{eqnarray*}
-F(k) = \displaystyle \sum_{r=0}^{n-1} A_r e^{2\pi i\frac{k}{n}r}\\
-\text{where } A_r = \frac{1}{N} \displaystyle \sum_{k=0}^{n-1} F(k) e^{-2\pi i\frac{k}{n}r}.
+    F(k) &=& \displaystyle \sum_{r=0}^{n-1} A_r e^{2\pi i\frac{k}{n}r}\\
+    \text{where } A_r &=& \frac{1}{N} \displaystyle \sum_{k=0}^{n-1} F(k) e^{-2\pi i\frac{k}{n}r} \text{ are the Fourier coefficients}.
 \end{eqnarray*}
-This correspond exactly to the equation $\frac{1}{n}\bar{V}\vec{y}=\vec{a}$ in the previous subsection if we let $\vec{a} = (F(0),F(1),\cdots,F(k)) = \vec{F}$. Following this trend, the inverse opertaion would simply be $V\vec{F} = \vec{y}$. We have already shown that this transformation could be done in $O(n\log_2n)$ time, hence the algorithm we described above is the FFT itself.
+The Fourier coefficients correspond exactly to $\vec{a}$ in the equation $\frac{1}{n}\bar{V}\vec{y}=\vec{a}$ in the previous subsection if we let $\vec{y} = (F(0),F(1),\cdots,F(k)) = \vec{F}$. Following this trend, the inverse opertaion would simply be $V\vec{F} = \vec{y}$. We have already shown that this transformation could be done in $O(n\log_2n)$ time, hence the algorithm we described above is the FFT/IFFT.
 
 In the case of converting representations of polynomials, the coefficient form corresponds exactly to the frequency space one would conventionally denote in Fourier analysis, as a coefficient vector tells us exactly how much of each power of $x$ a given polynomial has. Analogously with samples, they are in the time space. Once this realization has been made, it is immediately clear that we have used exactly the convolution theorem for inverse Fourier transform:
 \begin{eqnarray*}

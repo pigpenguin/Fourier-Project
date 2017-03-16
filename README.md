@@ -4,8 +4,8 @@ to do:
 - [x] Finish Ethan's part
 - [x] Fix references in Jocelyn's part
 - [x] Fix references in Tom's part
-- [ ] Add references to Evar's part
-- [ ] Fix figure mentions in Evar's part
+- [x] Add references to Evar's part
+- [x] Fix figure mentions in Evar's part
 - [ ] Add short introductions to the parts
-- [ ] Proofread and flow
+- [x] Proofread and flow
 - [ ] Fix figure placement

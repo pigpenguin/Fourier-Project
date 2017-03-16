@@ -2,35 +2,34 @@
 
 \begin{document}
   \section{Signal Processing}
-  One major area where fourier series are used is signal
-  processing. They allow you to disect a signal and analyize
+  One major area where Fourier Series are used is signal
+  processing. They allow you to dissect a signal and analyze
   it's component parts among other things. The particular use
   we will be looking at this section is how to record and reproduce
-  a bandlimited signal digitally with no loss of information.
+  a band limited signal digitally with no loss of information.
   This is of particular interest to the music industry as they
   need a way to record, store, and reproduce sound on computers.
 
   \subsection{Recording}
   The primary issue is that sound and other signals are continuous
-  while digital computers are inherintly discrete. Thus we need
+  while digital computers are inherently discrete. Thus we need
   to sample at some high enough frequency so as to not lose any
   information. Intuitively this feels like it would be impossible,
   surely if you sample finitely many points something could happen
-  inbetween them that they wouldn't register. This turns out to not
+  in between them that they wouldn't register. This turns out to not
   be the case for band limited signals as we will soon see.
 
   Let $x(t)$ be some signal and $X(\omega)$ be it's
-  spectrum, which is a map from a frequencey to it's
+  spectrum, which is a map from a frequency to it's
   strength in the signal. It is apparent if you know $x(t)$
-  you can compute $X(\omega)$ and if you know $X(\omega)$
+  you can compute $X(\omega)$ and if you know $X(\omega)$,
   you can compute $x(t)$. Thus $x$ and $X$ uniquely determine
-  eachother.
-  We will assume that the signal is band limited, i.e. no
+  each other. We will assume that the signal is band limited, i.e. no
   frequencies above or below a certain level. In the case of
-  sound even if your signal is not bandlimited our hearing is,
+  sound even if your signal is not band limited our hearing is,
   so you can just get rid of frequencies outside of our range.
   We will also assume your signal is nice enough to have a
-  fourier series representation naturally produced signals such
+  Fourier series representation naturally produced signals such
   as sound are this nice. The following argument is due to
   \cite{shannon1949}.
 
@@ -47,11 +46,11 @@
   where $n \in \mathbb{Z}$. This yields:
   \[x\left(\frac{n}{2B}\right) =
   \int_{-2\pi B}^{2\pi B}X(\omega)e^{\frac{itn}{2B}}\,d\omega\]
-  This, however, is just the $n^{\text{th}}$ fourier coeffecient
+  This, however, is just the $n^{\text{th}}$ Fourier coefficient
   of $X(\omega)$ so we have:
   \[x\left(\frac{n}{2B}\right) = \hat{X}(n)\]
   Thus if we sample our signal at regular intervals of
-  $n/2B$ we will get our fourier series for $X(n)$ which
+  $n/2B$ we will get our Fourier series for $X(n)$ which
   uniquely determines $X(n)$ which uniquely determines $x(t)$.
 
   \subsection{Recreation}
@@ -66,7 +65,7 @@
                 \end{cases} \]
   To prove this we use the argument from \cite{vrscay_2008}.
   \begin{proof}
-    We start by writing out the Fourier series for $X$
+    We start by writing out the Fourier Series for $X$
     \[X(\omega)=\sum_{k=\infty}^\infty\hat{X}(k)e^{i\pi k\omega/\pi}\]
     We then turn our attention to $\hat{X}(k)$ and get the following
     expression:
@@ -84,7 +83,7 @@
     \[ X(\omega) = \frac{\sqrt{2\pi}}{{4\pi B}}\sum_{k=-\infty}^\infty
     x\left(\frac{k}{2B}\right)e^{-i\pi k\omega/{2\pi B}}\]
     We now use this representation of $X(\omega)$ to calculate
-    $x(t)$ using the inverse Fourier transform:
+    $x(t)$ using the Inverse Fourier Transform:
     \begin{align*}
       x(t) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty X(\omega) e^{i\omega t}\,d\omega\\
       {} &= \frac{1}{\sqrt{2\pi}}\int_{-{2\pi B}}^{2\pi B} X(\omega) e^{i\omega t}\,d\omega\\
