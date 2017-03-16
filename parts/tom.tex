@@ -118,7 +118,7 @@ which effectively splits $P(x)$ into two polynomials each half the size of $P(x)
 P(x) = P_{\text{even}}(x^2)+x\cdot P_{\text{odd}}(x^2).
 \end{equation}
 
-Recursively apply this method to $P_even$ and $P_odd$ and so on will allow us to compute only bite-size problems which are easily solvable.
+Recursively apply this method to $P_{even}$ and $P_{odd}$ and so on will allow us to compute only bite-size problems which are easily solvable.
 
 Now it is important to note that we want to assume $n$ is a power of two, as the smallest subproblem we want to handle is evaluation of monomials. The assumption does very little to hurt the generality of this algorithm as one can always fill a coefficient vector with trailing zeroes up to the closest power of two and be happy that the algorithm applies well to it.
 
