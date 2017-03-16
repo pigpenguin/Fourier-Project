@@ -1,19 +1,28 @@
 \documentclass[11pt]{report}
-\usepackage{subfiles}
-\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{mathrsfs}
-\usepackage{float}
-\usepackage{biblatex}
-\addbibresource{article.bib}
-\usepackage{titlesec}
-\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge\it}
-\graphicspath{{img/}{../img/}}
+%Allow subfiles for more collaboration
+  \usepackage{subfiles}
 
-% Fixing latex's default terrible tables
+%Make latex do math more good
+  \usepackage{amsmath}
+  \usepackage{amssymb}
+  \usepackage{amsthm}
+
+%Script font for tom
+  \usepackage{mathrsfs}
+
+% Handling graphics, telling latex where to find em
+  \usepackage{graphicx}
+  \graphicspath{{img/}{../img/}}
+
+% Bibliography Resources
+  \usepackage{biblatex}
+  \addbibresource{article.bib}
+
+% Removing the "Chapter" from chapter headings
+  \usepackage{titlesec}
+  \titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge\it}
+
+% Fixing latex's terrible default tables
   \usepackage{booktabs}
   \usepackage[table]{xcolor}
   \setlength{\tabcolsep}{7pt}
@@ -21,17 +30,21 @@
   \renewcommand{\lightrulewidth}{.025em}
   \arrayrulecolor{gray}
 
-\setlength{\parindent}{0em}
-\setlength{\parskip}{1em}
+%We want spaces between paragraphs, not indents
+  \setlength{\parindent}{0em}
+  \setlength{\parskip}{1em}
 
-\DeclareMathOperator{\sinc}{sinc}
+%Custom operators we want
+  \DeclareMathOperator{\sinc}{sinc}
 
 \title{Fourier Project}
-%\author{Tom Hsieh \and Evar Jimenez \and  Joseph Knox
-%\and Jocelyn Park  \and Ethan Rooke }
 
-\author{Tom Hsieh \\ Evar Jimenez \\  Joseph Knox
-\\ Jocelyn Park  \\ Ethan Rooke }
+\author{Tom Hsieh\\
+        Evar Jimenez\\
+        Joseph Knox\\
+        Jocelyn Park \\
+        Ethan Rooke }
+
 \begin{document}
 \maketitle
 
