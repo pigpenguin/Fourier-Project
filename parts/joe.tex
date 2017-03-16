@@ -172,14 +172,14 @@ Now, for every $k \in \mathbb{Z}_{+}$ and fixed integer $t \in \mathbb{Z}_{+}$ t
 
 \begin{equation}
 \begin{split}
-\sum_{m=0}^{\infty} \sum_{s=0}^{t-1} f(tm+s,t) &= f(0 \cdot t + 0, t) + f(0 \cdot t +1, t) + ... + f(0 \cdot t + t-1, t) \\
-&+ f(1 \cdot t + 0, t) + f(1 \cdot t + 1,t ) + ... + f(1 \cdot t + t-1, t) \\
-&+ f(2 \cdot t + 0, t) + f(2 \cdot t +1, t) + ... + f(2 \cdot t + t-1, t) \\
-&+ ... \\
-&= f(0, t) + f(1, t) + ... + f(t-1, t) \\
-&+ f(t, t) + f(t+1, t) + ... + f(2t-1, t) \\
-&+f(2t, t) + f(2t +1, t) + ...+ f(3t-1, t) \\
-&+... \\
+\sum_{m=0}^{\infty} \sum_{s=0}^{t-1} f(tm+s,t) &= f(0 \cdot t + 0, t) + f(0 \cdot t +1, t) + \cdots + f(0 \cdot t + t-1, t) \\
+&+ f(1 \cdot t + 0, t) + f(1 \cdot t + 1,t ) + \cdots + f(1 \cdot t + t-1, t) \\
+&+ f(2 \cdot t + 0, t) + f(2 \cdot t +1, t) + \cdots + f(2 \cdot t + t-1, t) \\
+&+ \cdots \\
+&= f(0, t) + f(1, t) + \cdots + f(t-1, t) \\
+&+ f(t, t) + f(t+1, t) + \cdots + f(2t-1, t) \\
+&+f(2t, t) + f(2t +1, t) + \cdots f(3t-1, t) \\
+&+\cdots \\
 &= \sum_{k=0}^{\infty} f(k,t). \\
 \end{split}
 \end{equation}
@@ -196,21 +196,21 @@ Therefore,
 Again, let $f(tm + s, t)$ be an arbitrary function. Then the sum
 \begin{equation}
 \begin{split}
-\sum_{s=1}^{t} \sum_{m=0}^{\infty} f(tm+s, t) &= \sum_{s=1}^{t} {f(s,t) + f(t+s,t) + f(2t +s, t) + ...} \\
-&= f(1,t) + f(t+1,t) + f(2t+1,t) + ... \\
-&+ f(2,t) + f(t+2,t) + f(2t+2,t) + ... \\
-&+ ... \\
-&+ f(t,t) + f(2t,t) +f(3t, t) + ... \\
+\sum_{s=1}^{t} \sum_{m=0}^{\infty} f(tm+s, t) &= \sum_{s=1}^{t} {f(s,t) + f(t+s,t) + f(2t +s, t) + \cdots \\
+&= f(1,t) + f(t+1,t) + f(2t+1,t) + \cdots \\
+&+ f(2,t) + f(t+2,t) + f(2t+2,t) + \cdots \\
+&+ \cdots \\
+&+ f(t,t) + f(2t,t) +f(3t, t) + \cdots \\
 \end{split}
 \end{equation}
 
 Summing vertically across the arrangement above gives
 \begin{equation}
 \begin{split}
-&f(1, t) + f(2, t) + ... + f(t, t) \\
-&+ f(t+1, t) + f(t+2, t) + ... + f(2t, t) \\
-&+f(2t+1, t) + f(2t +2, t) + ...+ f(3t, t) \\
-&+... \\
+&f(1, t) + f(2, t) + \cdots + f(t, t) \\
+&+ f(t+1, t) + f(t+2, t) + \cdots + f(2t, t) \\
+&+f(2t+1, t) + f(2t +2, t) + \cdots f(3t, t) \\
+&+\cdots \\
 &= \sum_{k=1}^{\infty} f(k,t). \\
 \end{split}
 \end{equation}
