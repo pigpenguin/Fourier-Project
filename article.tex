@@ -13,6 +13,14 @@
 \titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge\it}
 \graphicspath{{img/}{../img/}}
 
+% Fixing latex's default terrible tables
+  \usepackage{booktabs}
+  \usepackage[table]{xcolor}
+  \setlength{\tabcolsep}{7pt}
+  \renewcommand{\arraystretch}{1.7}
+  \renewcommand{\lightrulewidth}{.025em}
+  \arrayrulecolor{gray}
+
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
 
