@@ -71,32 +71,32 @@
     We then turn our attention to $\hat{X}(k)$ and get the following
     expression:
     \begin{align*}
-      \hat{X}(k) &= \frac{1}{2\Omega}\int_{-\Omega}^\Omega X(\omega)
-      e^{-i\pi k \omega/\Omega}\,d\omega\\
-      {} &= \frac{1}{2\Omega}\int_{-\infty}^\infty X(\omega)
-      e^{-i\pi k \omega/\Omega}\,d\omega\\
-      {} &= \frac{\sqrt{2\pi}}{2\Omega}\frac{1}{\sqrt{2\pi}}
-      \int_{-\infty}^\infty X(\omega) e^{-i\pi k \omega/\Omega}\,d\omega\\
-      {} &= \frac{\sqrt{2\pi}}{2\Omega}x\left(\frac{k}{2B}\right)
+      \hat{X}(k) &= \frac{1}{{4\pi B}}\int_{-{2\pi B}}^{2\pi B} X(\omega)
+      e^{-i\pi k \omega/{2\pi B}}\,d\omega\\
+      {} &= \frac{1}{{4\pi B}}\int_{-\infty}^\infty X(\omega)
+      e^{-i\pi k \omega/{2\pi B}}\,d\omega\\
+      {} &= \frac{\sqrt{2\pi}}{{4\pi B}}\frac{1}{\sqrt{2\pi}}
+      \int_{-\infty}^\infty X(\omega) e^{-i\pi k \omega/{2\pi B}}\,d\omega\\
+      {} &= \frac{\sqrt{2\pi}}{{4\pi B}}x\left(\frac{k}{2B}\right)
     \end{align*}
     We take this expression for $\hat{X}$ and substitute back
     into our original expression to obtain:
-    \[ X(\omega) = \frac{\sqrt{2\pi}}{2\Omega}\sum_{k=-\infty}^\infty
-    x\left(\frac{k}{2B}\right)e^{-i\pi k\omega/\Omega}\]
+    \[ X(\omega) = \frac{\sqrt{2\pi}}{{4\pi B}}\sum_{k=-\infty}^\infty
+    x\left(\frac{k}{2B}\right)e^{-i\pi k\omega/{2\pi B}}\]
     We now use this representation of $X(\omega)$ to calculate
     $x(t)$ using the inverse Fourier transform:
     \begin{align*}
       x(t) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty X(\omega) e^{i\omega t}\,d\omega\\
-      {} &= \frac{1}{\sqrt{2\pi}}\int_{-\Omega}^\Omega X(\omega) e^{i\omega t}\,d\omega\\
-      {} &= \frac{1}{\sqrt{2\pi}}\int_{-\Omega}^\Omega \frac{\sqrt{2\pi}}{2\Omega}\sum_{k=-\infty}^\infty
-      x\left(\frac{k}{2B}\right)e^{-i\pi k\omega/\Omega} e^{i\omega t}\,d\omega\\
-      {} &= \frac{1}{2\Omega}\int_{-\Omega}^\Omega \sum_{k=-\infty}^\infty x\left(\frac{k}{2B}\right)e^{-i\pi k\omega/\Omega} e^{i\omega t}\,d\omega\\
-      {} &= \frac{1}{2\Omega}\ \sum_{k=-\infty}^\infty x\left(\frac{k}{2B}\right)\int_{-\Omega}^\Omega e^{-i\pi k\omega/\Omega} e^{i\omega t}\,d\omega
+      {} &= \frac{1}{\sqrt{2\pi}}\int_{-{2\pi B}}^{2\pi B} X(\omega) e^{i\omega t}\,d\omega\\
+      {} &= \frac{1}{\sqrt{2\pi}}\int_{-{2\pi B}}^{2\pi B} \frac{\sqrt{2\pi}}{{4\pi B}}\sum_{k=-\infty}^\infty
+      x\left(\frac{k}{2B}\right)e^{-i\pi k\omega/{2\pi B}} e^{i\omega t}\,d\omega\\
+      {} &= \frac{1}{{4\pi B}}\int_{-{2\pi B}}^{2\pi B} \sum_{k=-\infty}^\infty x\left(\frac{k}{2B}\right)e^{-i\pi k\omega/{2\pi B}} e^{i\omega t}\,d\omega\\
+      {} &= \frac{1}{{4\pi B}}\ \sum_{k=-\infty}^\infty x\left(\frac{k}{2B}\right)\int_{-{2\pi B}}^{2\pi B} e^{-i\pi k\omega/{2\pi B}} e^{i\omega t}\,d\omega
     \end{align*}
     If we evaluate the integral inside the summation we get:
-    \[int_{-\Omega}^\Omega e^{-i\pi k\omega/\Omega} e^{i\omega t}\,d\omega = 2\sin(\frac{\Omega t}{\pi}-k)\]
+    \[\int_{-{2\pi B}}^{2\pi B} e^{-i\pi k\omega/{2\pi B}} e^{i\omega t}\,d\omega = 2\sinc(\frac{{2\pi B} t}{\pi}-k)\]
     Which substituting back in gets us:
-    \[ x(t) = \sum_{k=-\infty}^\infty x\left(\frac{k\pi}{\Omega}\right)
-    \sinc\left(\frac{\Omega t}{pi}-k\right) = \sum_{k=-\infty}^\infty x\left(\frac{k}{2B}\right)\sinc(2Bt-k) \]
+    \[ x(t) = \sum_{k=-\infty}^\infty x\left(\frac{k\pi}{{2\pi B}}\right)
+    \sinc\left(\frac{{2\pi B} t}{\pi}-k\right) = \sum_{k=-\infty}^\infty x\left(\frac{k}{2B}\right)\sinc(2Bt-k) \]
   \end{proof}
 \end{document}
