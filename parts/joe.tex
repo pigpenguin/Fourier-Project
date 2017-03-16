@@ -2,6 +2,8 @@
 
 \begin{document}
 
+\section{The DFT and other nonsense}
+
 \subsection{Preliminary Definitions and Theorems}
 	Our Purpose in this section is to give the reader an understanding of the theoretical framework which gives rise to the Discrete Fourier Transform.
 
@@ -26,7 +28,8 @@ Let $z$ $\in \mathbb{Z}(N)$. Then, $z^N = (r \cdot e^{i \theta})^N = 1$. Therefo
 	{} &= 1 \cdot e^{-2 \pi i} \\
 	{} &= 1
 \end{align*}
-Therefore, $\zeta^k \in \mathbb{Z}(N)$ for all $k$ such that $0 \leq k \leq N-1$. Notice that the set $Q = \{0, 1, 2, ..., N-1\}$ is a residue system modulo $N$, and that the set $\zeta^Q = \{1, e^{2 \pi i/N}, e^{4 \pi i/N}, ..., e^{2(N-1) \pi i/N}\} \subseteq \mathbb{Z}(N)$. Now, for every $n \in \mathbb{Z}$, there exists an integer $m \in Q$ such that $n \equiv m$ mod $N$, since $Q$ is a complete residue system modulo $N$. When $k \geq N-1$, we have that $k \equiv l$ mod $N$ for some $l \in Q$. Therefore, $\mathbb{Z}(N) \subseteq Q$, and since we know $Q \subseteq Z(N)$, we have $Q = Z(N)$.
+Therefore, $\zeta^k \in \mathbb{Z}(N)$ for all $k$ such that $0 \leq k \leq N-1$. Notice that the set $Q = \{0, 1, 2, \ldots, N-1\}$ is a residue system modulo $N$, and that the set $\zeta^Q = \left\{1, e^{2 \pi i/N}, e^{4 \pi i/N}, \ldots, e^{2(N-1) \pi i/N}\right\} \subseteq \mathbb{Z}(N) $.
+Now, for every $n \in \mathbb{Z}$, there exists an integer $m \in Q$ such that $n \equiv m \mod N$, since $Q$ is a complete residue system modulo $N$. When $k \geq N-1$, we have that $k \equiv l$ mod $N$ for some $l \in Q$. Therefore, $\mathbb{Z}(N) \subseteq Q$, and since we know $Q \subseteq Z(N)$, we have $Q = Z(N)$.
 \end{proof}
 
 \begin{theorem}
@@ -34,15 +37,15 @@ $\mathbb{Z}(N)$ is a finite abelian group.
 \end{theorem}
 
 \begin{proof}
-That $| \mathbb{Z}(N)| < \infty$ is self-edvident. Thus, $\mathbb{Z}(N)$ is a finite group. Letting $z,w \in \mathbb{Z}(N)$, we find that $z \cdot w = e^{2 \pi i (k+l)/N}$ for some $k,l \in \mathbb{Z}$. Then, by the complete residue theorem of number theory, there exists an $m \in \{1, 2, 3, ..., N-1\}$ such that $(k+l) \equiv m$ mod $N$. Hence, $e^{2 \pi i (k+l)/N} = e^{2 \pi i m/N} \in \mathbb{Z}(N)$. Therefore, $\mathbb{Z}(N)$ is closed under complex multiplication.\newline
+That $| \mathbb{Z}(N)| < \infty$ is self-edvident. Thus, $\mathbb{Z}(N)$ is a finite group. Letting $z,w \in \mathbb{Z}(N)$, we find that $z \cdot w = e^{2 \pi i (k+l)/N}$ for some $k,l \in \mathbb{Z}$. Then, by the complete residue theorem of number theory, there exists an $m \in \{1, 2, 3, ..., N-1\}$ such that $(k+l) \equiv m$ mod $N$. Hence, $e^{2 \pi i (k+l)/N} = e^{2 \pi i m/N} \in \mathbb{Z}(N)$. Therefore, $\mathbb{Z}(N)$ is closed under complex multiplication.
 
-Let $z,w \in \mathbb{Z}(N)$. Then $z \cdot w = e^{2 \pi i k/N} \cdot e^{2 \pi i l/N} = e^{2 \pi i (k+l)/N} = e^{2 \pi i (l+k)/N} = e^{2 \pi i l/N} \cdot e^{2 \pi i k/N} = w \cdot z$. Therefore $(\mathbb{Z}(N), \cdot)$ is commutative.\newline
+Let $z,w \in \mathbb{Z}(N)$. Then $z \cdot w = e^{2 \pi i k/N} \cdot e^{2 \pi i l/N} = e^{2 \pi i (k+l)/N} = e^{2 \pi i (l+k)/N} = e^{2 \pi i l/N} \cdot e^{2 \pi i k/N} = w \cdot z$. Therefore $(\mathbb{Z}(N), \cdot)$ is commutative.
 
-Next, let $z,w,s \in \mathbb{Z}(N)$. Then, $(z \cdot w) \cdot s = (e^{2 \pi i k/N} \cdot e^{2 \pi i l/N}) \cdot e^{2 \pi i t/N} = e^{2 \pi i ((k+l)+t)/N} = e^{2 \pi i (k+(l+t))/N} = e^{2 \pi i k/N} \cdot (e^{2 \pi i l/N} \cdot e^{2 \pi i t/N}) = z \cdot (w \cdot s)$. So $(\mathbb{Z}(N), \cdot)$ is associative.\newline
+Next, let $z,w,s \in \mathbb{Z}(N)$. Then, $(z \cdot w) \cdot s = (e^{2 \pi i k/N} \cdot e^{2 \pi i l/N}) \cdot e^{2 \pi i t/N} = e^{2 \pi i ((k+l)+t)/N} = e^{2 \pi i (k+(l+t))/N} = e^{2 \pi i k/N} \cdot (e^{2 \pi i l/N} \cdot e^{2 \pi i t/N}) = z \cdot (w \cdot s)$. So $(\mathbb{Z}(N), \cdot)$ is associative.
 
-The identity element is $1 \in \mathbb{Z}(N)$, since for all $z \in \mathbb{Z}(N)$ we have $z \cdot 1 = z$.\newline
+The identity element is $1 \in \mathbb{Z}(N)$, since for all $z \in \mathbb{Z}(N)$ we have $z \cdot 1 = z$.
 
-If $z \in \mathbb{Z}(N)$, then $(1/z)^N = 1/ z^N = 1$. Therefore, $1/z \in \mathbb{Z}(N)$ and the inverse of any $z \in \mathbb{Z}(N)$ is $1/z$.\newline
+If $z \in \mathbb{Z}(N)$, then $(1/z)^N = 1/ z^N = 1$. Therefore, $1/z \in \mathbb{Z}(N)$ and the inverse of any $z \in \mathbb{Z}(N)$ is $1/z$.
 
 Therefore, $\mathbb{Z}(N)$ is an abelian group.
 \end{proof}
@@ -97,7 +100,7 @@ The Legendere Chi Function is defined by
 \begin{equation}
 \chi_{\nu}(z) = \sum_{k=0}^{\infty} \frac{z^{k+1}}{(2k+1)^{\nu}},
 \end{equation}
-where $|z| \leq 1$ and $\nu = 2,3,4....$\newline
+where $|z| \leq 1$ and $\nu = 2,3,4....$
 \end{definition}
 
 \begin{theorem}
@@ -109,7 +112,7 @@ Let $\omega^r = e^{2\pi i r/t}$. From the definition of $\chi_{\nu}(\omega^r)$, 
 \begin{equation}
 \chi_{\nu}(\omega^{r}) = \sum_{k=0}^{\infty} \frac{e^{2 \pi i r(k+1)/t}}{(2k+1)^{\nu}}.
 \end{equation}
-So,\newline
+So,
 \begin{equation}
 \begin{split}
 \chi_{\nu}(\omega^{r+t}) &= \sum_{k=0}^{\infty} \frac{e^{2 \pi i (r+t)(k+1)/t}}{(2k+1)^{\nu}} \\
