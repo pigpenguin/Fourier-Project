@@ -1,4 +1,5 @@
 \documentclass [../article.tex]{subfiles}
+
 \begin{document}
   \section{Signal Processing}
   One major area where fourier series are used is signal
@@ -30,7 +31,8 @@
   so you can just get rid of frequencies outside of our range.
   We will also assume your signal is nice enough to have a
   fourier series representation naturally produced signals such
-  as sound are this nice.
+  as sound are this nice. The following argument is due to
+  \cite{shannon1949}.
 
   The relation between $x(t)$ and $X(\omega)$ can be given by:
   \[x(t) = \frac{1}{2\pi}\int_{-\infty}^\infty
@@ -54,6 +56,47 @@
 
   \subsection{Recreation}
   Now let's assume you have these data points at $t=\frac{n}{2B}$
-  how would you go about recreating the sound?
-  
+  how would you go about recreating the sound? To do this you use
+  the Whittaker-Shannon interpolation theorem which states that:
+  \[f(t) = \sum_{k=-\infty}^\infty f\left(\frac{k}{2B}\right)\sinc(2Bt-k)\]
+  Where we have defined:
+  \[\sinc(x) = \begin{cases}
+                  \frac{\sin(\pi x)}{\pi x} & x \neq 0\\
+                  0 & x = 0
+                \end{cases} \]
+  To prove this we use the argument from \cite{vrscay_2008}.
+  \begin{proof}
+    We start by writing out the Fourier series for $X$
+    \[X(\omega)=\sum_{k=\infty}^\infty\hat{X}(k)e^{i\pi k\omega/\pi}\]
+    We then turn our attention to $\hat{X}(k)$ and get the following
+    expression:
+    \begin{align*}
+      \hat{X}(k) &= \frac{1}{2\Omega}\int_{-\Omega}^\Omega X(\omega)
+      e^{-i\pi k \omega/\Omega}\,d\omega\\
+      {} &= \frac{1}{2\Omega}\int_{-\infty}^\infty X(\omega)
+      e^{-i\pi k \omega/\Omega}\,d\omega\\
+      {} &= \frac{\sqrt{2\pi}}{2\Omega}\frac{1}{\sqrt{2\pi}}
+      \int_{-\infty}^\infty X(\omega) e^{-i\pi k \omega/\Omega}\,d\omega\\
+      {} &= \frac{\sqrt{2\pi}}{2\Omega}x\left(\frac{k}{2B}\right)
+    \end{align*}
+    We take this expression for $\hat{X}$ and substitute back
+    into our original expression to obtain:
+    \[ X(\omega) = \frac{\sqrt{2\pi}}{2\Omega}\sum_{k=-\infty}^\infty
+    x\left(\frac{k}{2B}\right)e^{-i\pi k\omega/\Omega}\]
+    We now use this representation of $X(\omega)$ to calculate
+    $x(t)$ using the inverse Fourier transform:
+    \begin{align*}
+      x(t) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty X(\omega) e^{i\omega t}\,d\omega\\
+      {} &= \frac{1}{\sqrt{2\pi}}\int_{-\Omega}^\Omega X(\omega) e^{i\omega t}\,d\omega\\
+      {} &= \frac{1}{\sqrt{2\pi}}\int_{-\Omega}^\Omega \frac{\sqrt{2\pi}}{2\Omega}\sum_{k=-\infty}^\infty
+      x\left(\frac{k}{2B}\right)e^{-i\pi k\omega/\Omega} e^{i\omega t}\,d\omega\\
+      {} &= \frac{1}{2\Omega}\int_{-\Omega}^\Omega \sum_{k=-\infty}^\infty x\left(\frac{k}{2B}\right)e^{-i\pi k\omega/\Omega} e^{i\omega t}\,d\omega\\
+      {} &= \frac{1}{2\Omega}\ \sum_{k=-\infty}^\infty x\left(\frac{k}{2B}\right)\int_{-\Omega}^\Omega e^{-i\pi k\omega/\Omega} e^{i\omega t}\,d\omega
+    \end{align*}
+    If we evaluate the integral inside the summation we get:
+    \[int_{-\Omega}^\Omega e^{-i\pi k\omega/\Omega} e^{i\omega t}\,d\omega = 2\sin(\frac{\Omega t}{\pi}-k)\]
+    Which substituting back in gets us:
+    \[ x(t) = \sum_{k=-\infty}^\infty x\left(\frac{k\pi}{\Omega}\right)
+    \sinc\left(\frac{\Omega t}{pi}-k\right) = \sum_{k=-\infty}^\infty x\left(\frac{k}{2B}\right)\sinc(2Bt-k) \]
+  \end{proof}
 \end{document}
