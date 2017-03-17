@@ -6,6 +6,6 @@ to do:
 - [x] Fix references in Tom's part
 - [x] Add references to Evar's part
 - [x] Fix figure mentions in Evar's part
-- [ ] Add short introductions to the parts
+- [x] Add short introductions to the parts
 - [x] Proofread and flow
 - [ ] Fix figure placement
