@@ -1,25 +1,16 @@
 \documentclass [../article.tex]{subfiles}
 \begin{document}
   \section{Image Processing}
-  
+
   In addition to being able to analyze One-Dimensional (1D) signals such as sound, we can look at Two-Dimensional (2D) signals, like images. In this particular space we can convert to a frequency domain, analyze and edit the sinals in the frequency domain, and then convert the signals back. This allows us to isolate certain frequencies, apply filters cheaply, and remove noise.
-  
-  \subsection{Two Dimensional Fourier Transform} 
+
+  \subsection{Two Dimensional Fourier Transform}
   The Fourier Transform converts a domain into a frequency domain.
   As we saw earlier, the Fourier Transform in audio signals takes
   a continuous time domain and converts it into a frequency domain.
   In image processing, the Fourier Transform converts a spatial
   domain into a frequency domain \cite{smith_1997}. The Fourier Transform in image processing allows us to access the geometric
   characteristics of an image \cite{fisher_perkins_walker_wolfart_2003}. By having access to the geometric characteristic, we are able to modify the image by changing some of those characteristics.
-
-  In order to modify the characteristics of an image, we apply
-  filters. Most of the time we apply filters to the original
-  image. However, this is not always the most efficient way to
-  manipulate an image. When we want to smooth, sharpen, and enhance
-  an image, it is easier to take the Discrete Fourier Transform (DFT),
-  apply the filters, and then take the inverse Discrete Fourier
-  Transform to obtain the image with the changes\cite{ludwig}.  It
-  is easier to apply the filter in the DFT because sharpening, enhancing, and smoothing an image are all consequences of convolution.  The Discrete Fourier Transform allows convolution to occur easier mathematically since convolution in the spatial domain becomes simply multiplication in the frequency domain \cite{smith_1997}. Therefore, applying filters in the frequency domain is much easier than applying filters in the spatial domain.
 
   Because images are in two dimension, we cannot calculate the
   Fourier Transform using a one dimension formula, like we did in
@@ -86,7 +77,18 @@
   frequency themselves.  Therefore, the information pertinent
   to us is the magnitude.
 
+  \subsection{Filters}
+
+  In order to modify the characteristics of an image, we apply
+  filters. Most of the time we apply filters to the original
+  image. However, this is not always the most efficient way to
+  manipulate an image. When we want to smooth, sharpen, and enhance
+  an image, it is easier to take the Discrete Fourier Transform (DFT),
+  apply the filters, and then take the inverse Discrete Fourier
+  Transform to obtain the image with the changes\cite{ludwig}.  It
+  is easier to apply the filter in the DFT because sharpening, enhancing, and smoothing an image are all consequences of convolution.  The Discrete Fourier Transform allows convolution to occur easier mathematically since convolution in the spatial domain becomes simply multiplication in the frequency domain \cite{smith_1997}. Therefore, applying filters in the frequency domain is much easier than applying filters in the spatial domain.
   Let's look at an example.
+
   \begin{figure}[htbp]
   \minipage{0.32\textwidth}
     \includegraphics[width=\linewidth]{jocelyn/01/original.png}
