@@ -73,7 +73,7 @@ a_n = \frac{1}{N} \sum_{k=0}{N-1} F(k) e^{-2 \pi ikn/N}.
 \begin{proof}
 Let $\zeta^{lk} = e^{2 \pi i lk/N}$, where $k,l = 0,1,...N-1$. Then, the set
 \begin{equation}
-V = \Bigg\{ \frac{1}{\sqrt{N}}, \frac{1}{\sqrt{N}}e^{2 \pi i k/N}, ..., \frac{1}{\sqrt{N}}e^{2 \pi i k(N-1)/N} \Bigg\}
+V = \left\{ \frac{1}{\sqrt{N}}, \frac{1}{\sqrt{N}}e^{2 \pi i k/N}, \ldots, \frac{1}{\sqrt{N}}e^{2 \pi i k(N-1)/N} \right\}
 \end{equation}
 forms an orthogonal basis for $\mathbb{Z}(N)$. So,
 \begin{equation}
@@ -84,7 +84,7 @@ where $\big(F,G \big)$ represents the Hermitian product of $F$ and $G$. By subst
 \begin{split}
 F(k) &= \sum_{n=0}^{N-1} \Bigg(\sum_{k=0}^{N-1} F(k) \frac{1}{\sqrt{N}} \zeta^{-lk} \Bigg) \frac{1}{\sqrt{N}} \zeta^{lk} \\
 &= \sum_{n=0}^{N-1} \Bigg(\frac{1}{N} \sum_{k=0}^{N-1} F(k) \zeta^{-lk} \Bigg) \zeta^{lk} \\
-&= \sum_{n=0}^{N-1} a_n e^{2 \pi nk/N} \\
+&= \sum_{n=0}^{N-1} a_n e^{2 \pi nk/N}
 \end{split}
 \end{equation}
 where
@@ -100,11 +100,11 @@ The Legendere Chi Function is defined by
 \begin{equation}
 \chi_{\nu}(z) = \sum_{k=0}^{\infty} \frac{z^{k+1}}{(2k+1)^{\nu}},
 \end{equation}
-where $|z| \leq 1$ and $\nu = 2,3,4....$
+where $|z| \leq 1$ and $\nu = 2,3,4,\ldots$
 \end{definition}
 
 \begin{theorem}
-If $\omega^r = e^{2\pi i r/t}$, where $r=1,2,...,t$, then $\chi_{\nu}(\omega^r)$ is $t$-periodic. That is, $\chi_{\nu}(\omega^{r+t}) = \chi_{\nu}(\omega^r)$.
+If $\omega^r = e^{2\pi i r/t}$, where $r=1,2,\ldots,t$, then $\chi_{\nu}(\omega^r)$ is $t$-periodic. That is, $\chi_{\nu}(\omega^{r+t}) = \chi_{\nu}(\omega^r)$.
 \end{theorem}
 
 \begin{proof}
@@ -118,7 +118,7 @@ So,
 \chi_{\nu}(\omega^{r+t}) &= \sum_{k=0}^{\infty} \frac{e^{2 \pi i (r+t)(k+1)/t}}{(2k+1)^{\nu}} \\
 &= \sum_{k=0}^{\infty} \frac{e^{2 \pi i r(k+1)/t}e^{2 \pi i(k+1)}}{(2k+1)^{\nu}} \\
 &= \sum_{k=0}^{\infty} \frac{e^{2 \pi i r(k+1)/t}}{(2k+1)^{\nu}} \\
-&= \chi_{\nu}(\omega^r).\\
+&= \chi_{\nu}(\omega^r)
 \end{split}
 \end{equation}
 
@@ -155,7 +155,7 @@ If $\omega = e^{2\pi i/t}$, then $\omega^r = e^{2 \pi i r/t}$ and
 &= \sum_{k=0}^{\infty} \frac{e^{(4 \pi irk +2\pi i r)/t}}{(2k+1)^{\nu}} \\
 &= \sum_{k=0}^{\infty} \frac{e^{(4 \pi irk +4 \pi ir - 2\pi i r)/t}}{(2k+1)^{\nu}} \\
 &= \sum_{k=0}^{\infty} \frac{e^{(4 \pi irk +4 \pi ir)/t}e^{- 2\pi i r/t}}{(2k+1)^{\nu}} \\
-&= e^{- 2\pi i r/t} \sum_{k=0}^{\infty} \frac{e^{4 \pi i r(k+1)/t}}{(2k+1)^{\nu}}. \\
+&= e^{- 2\pi i r/t} \sum_{k=0}^{\infty} \frac{e^{4 \pi i r(k+1)/t}}{(2k+1)^{\nu}}
 \end{split}
 \end{equation}
 
@@ -175,7 +175,7 @@ Now, for every $k \in \mathbb{Z}_{+}$ and fixed integer $t \in \mathbb{Z}_{+}$ t
 \sum_{m=0}^{\infty} \sum_{s=0}^{t-1} f(tm+s,t) &= f(0 \cdot t + 0, t) + f(0 \cdot t +1, t) + \cdots + f(0 \cdot t + t-1, t) \\
 &+ f(1 \cdot t + 0, t) + f(1 \cdot t + 1,t ) + \cdots + f(1 \cdot t + t-1, t) \\
 &+ f(2 \cdot t + 0, t) + f(2 \cdot t +1, t) + \cdots + f(2 \cdot t + t-1, t) \\
-&+ \cdots \\
+&+ \cdots \\ta
 &= f(0, t) + f(1, t) + \cdots + f(t-1, t) \\
 &+ f(t, t) + f(t+1, t) + \cdots + f(2t-1, t) \\
 &+f(2t, t) + f(2t +1, t) + \cdots f(3t-1, t) \\
@@ -196,11 +196,11 @@ Therefore,
 Again, let $f(tm + s, t)$ be an arbitrary function. Then the sum
 \begin{equation}
 \begin{split}
-\sum_{s=1}^{t} \sum_{m=0}^{\infty} f(tm+s, t) &= \sum_{s=1}^{t} {f(s,t) + f(t+s,t) + f(2t +s, t) + \cdots \\
+\sum_{s=1}^{t} \sum_{m=0}^{\infty} f(tm+s, t) &= \sum_{s=1}^{t} f(s,t) + f(t+s,t) + f(2t +s, t) + \cdots \\
 &= f(1,t) + f(t+1,t) + f(2t+1,t) + \cdots \\
 &+ f(2,t) + f(t+2,t) + f(2t+2,t) + \cdots \\
 &+ \cdots \\
-&+ f(t,t) + f(2t,t) +f(3t, t) + \cdots \\
+&+ f(t,t) + f(2t,t) +f(3t, t) + \cdots
 \end{split}
 \end{equation}
 
@@ -211,7 +211,7 @@ Summing vertically across the arrangement above gives
 &+ f(t+1, t) + f(t+2, t) + \cdots + f(2t, t) \\
 &+f(2t+1, t) + f(2t +2, t) + \cdots f(3t, t) \\
 &+\cdots \\
-&= \sum_{k=1}^{\infty} f(k,t). \\
+&= \sum_{k=1}^{\infty} f(k,t)
 \end{split}
 \end{equation}
 
@@ -225,7 +225,7 @@ So our sum
 \begin{split}
 \sum_{m=0}^{\infty} \sum_{s=1}^{t} \frac{e^{4 \pi ir(tm+s)/t}}{(2tm+2s-1)^{\nu}} &= \sum_{s=1}^{t} \sum_{m=0}^{\infty} \frac{e^{4 \pi ir(tm+s)/t}}{(2tm+2s-1)^{\nu}} \\
 &= \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} \sum_{m=0}^{\infty} \frac{e^{4 \pi imr} \cdot e^{4 \pi r is/t}}{(m+\frac{2s-1}{2t})^{\nu}}. \\
-&= \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} \sum_{m=0}^{\infty} \frac{e^{4 \pi r is/t}}{(m+\frac{2s-1}{2t})^{\nu}} \\
+&= \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} \sum_{m=0}^{\infty} \frac{e^{4 \pi r is/t}}{(m+\frac{2s-1}{2t})^{\nu}}
 \end{split}
 \end{equation}
 
@@ -236,7 +236,7 @@ Therefore,
 \omega^{-r}\chi_{\nu}(\omega^r)\omega^r &= \frac{\omega^{-r}}{(2t)^{\nu}} \sum_{s=1}^{t} \sum_{m=0}^{\infty} \frac{e^{4 \pi r is/t}}{(m+\frac{2s-1}{2t})^{\nu}} \\
 &=\frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} e^{4 \pi ris/t - 2 \pi ri/t} \sum_{m=0}^{\infty} \frac{1}{(m+\frac{2s-1}{2t})^{\nu}}. \\
 &= \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} e^{2 \pi ir(2s-1)/t} \sum_{m=0}^{\infty} \frac{1}{(m+\frac{2s-1}{2t})^{\nu}} \\
-&= \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} e^{2 \pi ir(2s-1)/t} \zeta(\nu, (2s-1)/2t) \\
+&= \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} e^{2 \pi ir(2s-1)/t} \zeta(\nu, (2s-1)/2t)
 \end{split}
 \end{equation}
 
@@ -252,7 +252,7 @@ By Theorem 4, since $\zeta(\nu, (2s-1)/2t)$ is a function on $\mathbb{Z}(t)$, we
 \end{equation}
 where
 \begin{equation}
-a_n = \frac{1}{t} \sum_{s=1}^{t} \zeta(\nu, (2s-1)/2t) e^{-2 \pi r(2s-1)/t}.
+a_n = \frac{1}{t} \sum_{s=1}^{t} \zeta(\nu, (2s-1)/2t) e^{-2 \pi r(2s-1)/t}
 \end{equation}
 So,
 \begin{equation}
@@ -262,7 +262,7 @@ So,
 &= \frac{1}{t} \sum_{r=1}^{t} (2t)^{\nu} \Bigg(\frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} e^{2 \pi ir(2s-1)/t} \zeta(\nu, (2s-1)/2t \Bigg) e^{-2 \pi ir(2s-1)/t} \\
 &= \frac{1}{t} \sum_{r=1}^{t} (2t)^{\nu} \chi_{\nu}(e^{2 \pi ir(2s-1)/t})e^{-2 \pi ir(2s-1)/t} \\
 &= \frac{1}{t} \sum_{r=1}^{t} (2t)^{\nu} \chi_{\nu}(\omega^{r(2s-1)})\omega^{-r(2s-1)} \\
-&= \frac{1}{t} \sum_{r=1}^{t} (2t)^{\nu} \chi_{\nu}(\omega^{r})\omega^{-r}, \\
+&= \frac{1}{t} \sum_{r=1}^{t} (2t)^{\nu} \chi_{\nu}(\omega^{r})\omega^{-r},
 \end{split}
 \end{equation}
 
@@ -304,7 +304,7 @@ When $k$ is even the summand is null; when k is odd, the summand is $2z^{k}/k^s$
 \frac{1}{2} (Li_{s}(z) - Li_{s}(-z)) &= \frac{1}{2} \sum_{k=1}^{\infty} \frac{z^{k} - (-z)^k}{k^s} \\
 &= \frac{1}{2} \sum_{k=1,3,5,...} \frac{2(z)^k}{k^s} \\
 &= \sum_{k=0}^{\infty} \frac{z^{2k+1}}{(2k+1)^s} \\
-&= \chi_{s}(z). \\
+&= \chi_{s}(z)
 \end{split}
 \end{equation}
 \end{proof}
@@ -315,7 +315,7 @@ The preceding gives us a unique representation of $\zeta(\nu)$ in terms of $\chi
 \zeta(\nu, \frac{2s-1}{2t}) &= \zeta(\nu) \\
 &= \frac{1}{t} \sum_{r=1}{t} (2t)^{\nu} \chi_{\nu}(\omega^{r+t}) \omega^{-r(2t-1)} \\
 &= \frac{1}{t} \sum_{r=1}{t} (2t)^{\nu} \chi_{\nu}(\omega^{r+t}) \omega^{r} \\
-&= \prod_{p} \frac{1}{1- p^{-\nu}} \\
+&= \prod_{p} \frac{1}{1- p^{-\nu}}
 \end{split}
 \end{equation}$\blacksquare$
 \end{corollary}

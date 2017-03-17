@@ -1,6 +1,6 @@
 Tex files for our final project in fourier. Still have some things
 to do:
-- [ ] Add Joe's part
+- [x] Add Joe's part
 - [x] Finish Ethan's part
 - [x] Fix references in Jocelyn's part
 - [x] Fix references in Tom's part
