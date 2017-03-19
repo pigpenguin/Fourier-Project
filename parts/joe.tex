@@ -14,11 +14,11 @@ F(n) &= \sum_{k=0}^{T-1} f(k) e^{-2 \pi ikn/T} \\
 \end{align}
 \end{equation}
 
-where $n \in \mathbb{Z}$.\newline
+where $n \in \mathbb{Z}$.
 
 \subsection{The Group $\mathbb{Z}(N)$}
 
-As it turns out, the group $\mathbb{Z}(N)$ plays an important part in the theory of the discrete Fourier transform, and acts as a weight for storing information on the unit circle for any given periodic function. 
+As it turns out, the group $\mathbb{Z}(N)$ plays an important part in the theory of the discrete Fourier transform, and acts as a weight for storing information on the unit circle for any given periodic function.
 
 \begin{definition}
 Let $\mathbb{Z}(N)$ be the set of all N-th roots of unity. Then,
@@ -55,7 +55,7 @@ $\mathbb{Z}(N)$ is a finite abelian group.
 That $| \mathbb{Z}(N)| < \infty$ is self-edvident. Thus, $\mathbb{Z}(N)$ is a finite group. Letting $z,w \in \mathbb{Z}(N)$, we find that $z \cdot w = e^{2 \pi i (k+l)/N}$ for some $k,l \in \mathbb{Z}$. Then, by the complete residue theorem of number theory, there exists an $m \in \{1, 2, 3, ..., N-1\}$ such that $(k+l) \equiv m \mod N$. Hence, $e^{2 \pi i (k+l)/N} = e^{2 \pi i m/N} \in \mathbb{Z}(N)$. Therefore, $\mathbb{Z}(N)$ is closed under complex multiplication. Let $z,w \in \mathbb{Z}(N)$. Then $z \cdot w = e^{2 \pi i k/N} \cdot e^{2 \pi i l/N} = e^{2 \pi i (k+l)/N} = e^{2 \pi i (l+k)/N} = e^{2 \pi i l/N} \cdot e^{2 \pi i k/N} = w \cdot z$. Therefore $(\mathbb{Z}(N), \cdot)$ is commutative. Next, let $z,w,s \in \mathbb{Z}(N)$. Then, $(z \cdot w) \cdot s = (e^{2 \pi i k/N} \cdot e^{2 \pi i l/N}) \cdot e^{2 \pi i t/N} = e^{2 \pi i ((k+l)+t)/N} = e^{2 \pi i (k+(l+t))/N} = e^{2 \pi i k/N} \cdot (e^{2 \pi i l/N} \cdot e^{2 \pi i t/N}) = z \cdot (w \cdot s)$. So $(\mathbb{Z}(N), \cdot)$ is associative. The identity element is $1 \in \mathbb{Z}(N)$, since for all $z \in \mathbb{Z}(N)$ we have $z \cdot 1 = z$. If $z \in \mathbb{Z}(N)$, then $(1/z)^N = 1/ z^N = 1$. Therefore, $1/z \in \mathbb{Z}(N)$ and the inverse of any $z \in \mathbb{Z}(N)$ is $1/z$. Therefore, $\mathbb{Z}(N)$ is an abelian group.
 \end{proof}
 
-Furthermore, we can show that $\mathbb{Z}/ N\mathbb{Z}$, the set of all equivalence classes of integers modulo $N$, is an abelian group. 
+Furthermore, we can show that $\mathbb{Z}/ N\mathbb{Z}$, the set of all equivalence classes of integers modulo $N$, is an abelian group.
 
 \begin{definition}
 For all $x \in \mathbb{Z}$, let $R_N (x) = \{y \in \mathbb{Z} : y \equiv x   \mod   N\}$, where $N \in \mathbb{Z}$
