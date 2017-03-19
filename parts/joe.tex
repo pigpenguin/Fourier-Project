@@ -2,19 +2,18 @@
 
 \begin{document}
 
-\section{The DFT and other nonsense}
-Our purpose in this section is to give the reader an understanding of the theoretical framework which gives rise to the Discrete Fourier transform and then give some details on other related concepts.
+\section{The Discrete Fourier Transform}
+Our purpose in this section is to give the reader an understanding of the theoretical framework which gives rise to the Discrete Fourier transform.
 
 \subsection{The Signal Interpretation of the Discrete Fourier Transform}
 
-Let $f(t)$ be a periodic function. Then the discrete Fourier transform of $f(t)$, called $\mathcal{F}\{f(t)}$, is the value of the amount of frequency given by $f(t)$. Consider a set of samples $S = \{0,1,2,...,T-1\}$. Then the discrete Fourier transform of $f(S)$ is
-\begin{equation}
-\begin{align}
-F(n) &= \sum_{k=0}^{T-1} f(k) e^{-2 \pi ikn/T} \\
-\end{align}
-\end{equation}
+Let $f(t)$ be a periodic function. Then the discrete Fourier transform of $f(t)$, called $\mathcal{F}\{f(t)\}$, is the value of the amount of frequency given by $f(t)$. Consider a set of samples $S = \{0,1,2,...,T-1\}$. Then the discrete Fourier transform of $f(S)$ is
+\begin{equation*}
+F(n) = \sum_{k=0}^{T-1} f(k) e^{-2 \pi ikn/T}
+\end{equation*}
 
-where $n \in \mathbb{Z}$.\newline
+where $n \in \mathbb{Z}$.
+
 
 \subsection{The Group $\mathbb{Z}(N)$}
 
@@ -69,21 +68,15 @@ Let $\alpha \in R_N (x)$ and $\beta \in R_N (y)$. Then, $\alpha = x +kN$ for som
 
 Now that we have proven $\mathbb{Z}(N)$ is a finite abelian group and homomorphic to the group $\mathbb{Z} /N\mathbb{Z}(N)$, we can think of the discrete Fourier transform as a vector space over $\mathbb{Z}(N)$ with the Hermitian inner product
 
-\begin{equation}
-\begin{align}
+\begin{equation*}
 (F,G) = \sum_{n=0}^{N-1} F(k) \overline{G(k)}
-\end{align}
-\end{equation}
+\end{equation*}
 
 and norm
 
-\begin{equation}
-\begin{align}
-
-\norm{F}^2 = sum_{k=0}^{N-1} |F(k)|^2
-
-\end{align}
-\end{equation}
+\begin{equation*}
+F^2 = \sum_{k=0}^{N-1} |F(k)|^2.
+\end{equation*}
 
 \begin{theorem}
 If $F$ is a function on $\mathbb{Z}(N)$, then
