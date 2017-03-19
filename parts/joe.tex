@@ -9,9 +9,9 @@ Our purpose in this section is to give the reader an understanding of the theore
 
 Let $f(t)$ be a periodic function. Then the discrete Fourier transform of $f(t)$, called $\mathcal{F}\{f(t)\}$, is the value of the amount of frequency given by $f(t)$. Consider a set of samples $S = \{0,1,2,...,T-1\}$. Then the discrete Fourier transform of $f(S)$ is
 
-\begin{equation}
-F(n) = \sum_{k=0}^{T-1} f(k) e^{-2 \pi ikn/T} \\
-\end{equation}
+\[
+F(n) = \sum_{k=0}^{T-1} f(k) e^{-2 \pi ikn/T}
+\]
 
 where $n \in \mathbb{Z}$.
 
@@ -68,47 +68,44 @@ Let $\alpha \in R_N (x)$ and $\beta \in R_N (y)$. Then, $\alpha = x +kN$ for som
 
 Now that we have proven $\mathbb{Z}(N)$ is a finite abelian group and homomorphic to the group $\mathbb{Z} /N\mathbb{Z}(N)$, we can think of the discrete Fourier transform as a vector space over $\mathbb{Z}(N)$ with the Hermitian inner product
 
-\begin{equation}
+\[
   (F,G) = \sum_{n=0}^{N-1} F(k) \overline{G(k)}
-\end{equation}
-
+\]
 and norm
 
-\begin{equation}
+\[
   ||F||^2 = \sum_{k=0}^{N-1} |F(k)|^2
-\end{equation}
+\]
 
 \begin{theorem}
 If $F$ is a function on $\mathbb{Z}(N)$, then
-\begin{equation}
+\[
 F(k) = \sum_{n=0}^{N-1} a_n e^{2 \pi nk/N}
-\end{equation}
+\]
 where
-\begin{equation}
+\[
 a_n = \frac{1}{N} \sum_{k=0}{N-1} F(k) e^{-2 \pi ikn/N}.
-\end{equation}
+\]
 \end{theorem}
 \begin{proof}
 Let $\zeta^{lk} = e^{2 \pi i lk/N}$, where $k,l = 0,1,...N-1$. Then, the set
-\begin{equation}
+\[
 V = \left\{ \frac{1}{\sqrt{N}}, \frac{1}{\sqrt{N}}e^{2 \pi i k/N}, \ldots, \frac{1}{\sqrt{N}}e^{2 \pi i k(N-1)/N} \right\}
-\end{equation}
+\]
 forms an orthogonal basis for $\mathbb{Z}(N)$. So,
-\begin{equation}
+\[
 F(k) = \sum_{n=0}^{N-1} \Big(F(k), \frac{1}{\sqrt{N}}\zeta^{nk} \Big) \frac{1}{\sqrt{N}}\zeta^{nk}
-\end{equation}
+\]
 where $\big(F,G \big)$ represents the Hermitian product of $F$ and $G$. By substitution we obtain
-\begin{equation}
-\begin{split}
+\begin{align*}
 F(k) &= \sum_{n=0}^{N-1} \Bigg(\sum_{k=0}^{N-1} F(k) \frac{1}{\sqrt{N}} \zeta^{-lk} \Bigg) \frac{1}{\sqrt{N}} \zeta^{lk} \\
 &= \sum_{n=0}^{N-1} \Bigg(\frac{1}{N} \sum_{k=0}^{N-1} F(k) \zeta^{-lk} \Bigg) \zeta^{lk} \\
 &= \sum_{n=0}^{N-1} a_n e^{2 \pi nk/N}
-\end{split}
-\end{equation}
+\end{align*}
 where
-\begin{equation}
+\[
 a_n = \frac{1}{N} \sum_{k=0}^{N-1} F(k) e^{-2 \pi ikn/N}
-\end{equation}
+\]
 and $e^{2 \pi i/N} = \zeta$.
 \end{proof}
 
