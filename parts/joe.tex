@@ -5,8 +5,20 @@
 \section{The DFT and other nonsense}
 Our purpose in this section is to give the reader an understanding of the theoretical framework which gives rise to the Discrete Fourier transform and then give some details on other related concepts.
 
-\subsection{Preliminary Definitions and Theorems}
+\subsection{The Signal Interpretation of the Discrete Fourier Transform}
 
+Let $f(t)$ be a periodic function. Then the discrete Fourier transform of $f(t)$, called $\mathcal{F}\{f(t)}$, is the value of the amount of frequency given by $f(t)$. Consider a set of samples $S = \{0,1,2,...,T-1\}$. Then the discrete Fourier transform of $f(S)$ is
+\begin{equation}
+\begin{align}
+F(n) &= \sum_{k=0}^{T-1} f(k) e^{-2 \pi ikn/T} \\
+\end{align}
+\end{equation}
+
+where $n \in \mathbb{Z}$.\newline
+
+\subsection{The Group $\mathbb{Z}(N)$}
+
+As it turns out, the group $\mathbb{Z}(N)$ plays an important part in the theory of the discrete Fourier transform, and acts as a weight for storing information on the unit circle for any given periodic function. 
 
 \begin{definition}
 Let $\mathbb{Z}(N)$ be the set of all N-th roots of unity. Then,
@@ -33,23 +45,17 @@ Therefore, $\zeta^k \in \mathbb{Z}(N)$ for all $k$ such that $0 \leq k \leq N-1$
 Now, for every $n \in \mathbb{Z}$, there exists an integer $m \in Q$ such that $n \equiv m \mod N$, since $Q$ is a complete residue system modulo $N$. When $k \geq N-1$, we have that $k \equiv l \mod N$ for some $l \in Q$. Therefore, $\mathbb{Z}(N) \subseteq Q$, and since we know $Q \subseteq Z(N)$, we have $Q = Z(N)$.
 \end{proof}
 
+We can also show that $\mathbb{Z}(N)$ is a finite abelian group and, indeed, forms a basis of a vector space of complex-valued functions on the unit circle.
+
 \begin{theorem}
 $\mathbb{Z}(N)$ is a finite abelian group.
 \end{theorem}
 
 \begin{proof}
-That $| \mathbb{Z}(N)| < \infty$ is self-edvident. Thus, $\mathbb{Z}(N)$ is a finite group. Letting $z,w \in \mathbb{Z}(N)$, we find that $z \cdot w = e^{2 \pi i (k+l)/N}$ for some $k,l \in \mathbb{Z}$. Then, by the complete residue theorem of number theory, there exists an $m \in \{1, 2, 3, ..., N-1\}$ such that $(k+l) \equiv m \mod N$. Hence, $e^{2 \pi i (k+l)/N} = e^{2 \pi i m/N} \in \mathbb{Z}(N)$. Therefore, $\mathbb{Z}(N)$ is closed under complex multiplication.
-
-Let $z,w \in \mathbb{Z}(N)$. Then $z \cdot w = e^{2 \pi i k/N} \cdot e^{2 \pi i l/N} = e^{2 \pi i (k+l)/N} = e^{2 \pi i (l+k)/N} = e^{2 \pi i l/N} \cdot e^{2 \pi i k/N} = w \cdot z$. Therefore $(\mathbb{Z}(N), \cdot)$ is commutative.
-
-Next, let $z,w,s \in \mathbb{Z}(N)$. Then, $(z \cdot w) \cdot s = (e^{2 \pi i k/N} \cdot e^{2 \pi i l/N}) \cdot e^{2 \pi i t/N} = e^{2 \pi i ((k+l)+t)/N} = e^{2 \pi i (k+(l+t))/N} = e^{2 \pi i k/N} \cdot (e^{2 \pi i l/N} \cdot e^{2 \pi i t/N}) = z \cdot (w \cdot s)$. So $(\mathbb{Z}(N), \cdot)$ is associative.
-
-The identity element is $1 \in \mathbb{Z}(N)$, since for all $z \in \mathbb{Z}(N)$ we have $z \cdot 1 = z$.
-
-If $z \in \mathbb{Z}(N)$, then $(1/z)^N = 1/ z^N = 1$. Therefore, $1/z \in \mathbb{Z}(N)$ and the inverse of any $z \in \mathbb{Z}(N)$ is $1/z$.
-
-Therefore, $\mathbb{Z}(N)$ is an abelian group.
+That $| \mathbb{Z}(N)| < \infty$ is self-edvident. Thus, $\mathbb{Z}(N)$ is a finite group. Letting $z,w \in \mathbb{Z}(N)$, we find that $z \cdot w = e^{2 \pi i (k+l)/N}$ for some $k,l \in \mathbb{Z}$. Then, by the complete residue theorem of number theory, there exists an $m \in \{1, 2, 3, ..., N-1\}$ such that $(k+l) \equiv m \mod N$. Hence, $e^{2 \pi i (k+l)/N} = e^{2 \pi i m/N} \in \mathbb{Z}(N)$. Therefore, $\mathbb{Z}(N)$ is closed under complex multiplication. Let $z,w \in \mathbb{Z}(N)$. Then $z \cdot w = e^{2 \pi i k/N} \cdot e^{2 \pi i l/N} = e^{2 \pi i (k+l)/N} = e^{2 \pi i (l+k)/N} = e^{2 \pi i l/N} \cdot e^{2 \pi i k/N} = w \cdot z$. Therefore $(\mathbb{Z}(N), \cdot)$ is commutative. Next, let $z,w,s \in \mathbb{Z}(N)$. Then, $(z \cdot w) \cdot s = (e^{2 \pi i k/N} \cdot e^{2 \pi i l/N}) \cdot e^{2 \pi i t/N} = e^{2 \pi i ((k+l)+t)/N} = e^{2 \pi i (k+(l+t))/N} = e^{2 \pi i k/N} \cdot (e^{2 \pi i l/N} \cdot e^{2 \pi i t/N}) = z \cdot (w \cdot s)$. So $(\mathbb{Z}(N), \cdot)$ is associative. The identity element is $1 \in \mathbb{Z}(N)$, since for all $z \in \mathbb{Z}(N)$ we have $z \cdot 1 = z$. If $z \in \mathbb{Z}(N)$, then $(1/z)^N = 1/ z^N = 1$. Therefore, $1/z \in \mathbb{Z}(N)$ and the inverse of any $z \in \mathbb{Z}(N)$ is $1/z$. Therefore, $\mathbb{Z}(N)$ is an abelian group.
 \end{proof}
+
+Furthermore, we can show that $\mathbb{Z}/ N\mathbb{Z}$, the set of all equivalence classes of integers modulo $N$, is an abelian group. 
 
 \begin{definition}
 For all $x \in \mathbb{Z}$, let $R_N (x) = \{y \in \mathbb{Z} : y \equiv x   \mod   N\}$, where $N \in \mathbb{Z}$
@@ -60,6 +66,24 @@ For all $x,y \in \mathbb{Z}$, $R_N (x) + R_N (y) = R_N (x+y).$
 \begin{proof}
 Let $\alpha \in R_N (x)$ and $\beta \in R_N (y)$. Then, $\alpha = x +kN$ for some $k \in \mathbb{Z}$ and $\beta = y + lN$ for some $l \in \mathbb{Z}$. Then, $(x+y)+(k+l)N \in R_N (x+y)$. Conversely, let $x+y \in R_N (x+y)$. Then, $x = \alpha -kN$ and $y = \beta -lN$. Therefore, $(x+y) = (\alpha + \beta) -(k+l)N$. Therefore, $(x+y) \equiv \alpha +\beta) \mod N$. Therefore, $x \equiv \alpha \mod N$ and $y \equiv \beta \mod N$. Therefore, $x+y \in R_N (x) + R_N (y)$.
 \end{proof}
+
+Now that we have proven $\mathbb{Z}(N)$ is a finite abelian group and homomorphic to the group $\mathbb{Z} /N\mathbb{Z}(N)$, we can think of the discrete Fourier transform as a vector space over $\mathbb{Z}(N)$ with the Hermitian inner product
+
+\begin{equation}
+\begin{align}
+(F,G) = \sum_{n=0}^{N-1} F(k) \overline{G(k)}
+\end{align}
+\end{equation}
+
+and norm
+
+\begin{equation}
+\begin{align}
+
+\norm{F}^2 = sum_{k=0}^{N-1} |F(k)|^2
+
+\end{align}
+\end{equation}
 
 \begin{theorem}
 If $F$ is a function on $\mathbb{Z}(N)$, then
@@ -95,232 +119,6 @@ a_n = \frac{1}{N} \sum_{k=0}^{N-1} F(k) e^{-2 \pi ikn/N}
 and $e^{2 \pi i/N} = \zeta$.
 \end{proof}
 
-This concludes the justification of discrete Fourier transform that is widely used in modern computational applications. For the remaining subsections we would like to detour into other interesting concepts relating to the work shown above.
-
-\subsection{Legendere Chi Function and Hurwitz Zeta Function}
-\begin{definition}
-The Legendere Chi Function is defined by
-\begin{equation}
-\chi_{\nu}(z) = \sum_{k=0}^{\infty} \frac{z^{k+1}}{(2k+1)^{\nu}},
-\end{equation}
-where $|z| \leq 1$ and $\nu = 2,3,4,\ldots$
-\end{definition}
-
-\begin{theorem}
-If $\omega^r = e^{2\pi i r/t}$, where $r=1,2,\ldots,t$, then $\chi_{\nu}(\omega^r)$ is $t$-periodic. That is, $\chi_{\nu}(\omega^{r+t}) = \chi_{\nu}(\omega^r)$.
-\end{theorem}
-
-\begin{proof}
-Let $\omega^r = e^{2\pi i r/t}$. From the definition of $\chi_{\nu}(\omega^r)$, we know
-\begin{equation}
-\chi_{\nu}(\omega^{r}) = \sum_{k=0}^{\infty} \frac{e^{2 \pi i r(k+1)/t}}{(2k+1)^{\nu}}.
-\end{equation}
-So,
-\begin{equation}
-\begin{split}
-\chi_{\nu}(\omega^{r+t}) &= \sum_{k=0}^{\infty} \frac{e^{2 \pi i (r+t)(k+1)/t}}{(2k+1)^{\nu}} \\
-&= \sum_{k=0}^{\infty} \frac{e^{2 \pi i r(k+1)/t}e^{2 \pi i(k+1)}}{(2k+1)^{\nu}} \\
-&= \sum_{k=0}^{\infty} \frac{e^{2 \pi i r(k+1)/t}}{(2k+1)^{\nu}} \\
-&= \chi_{\nu}(\omega^r)
-\end{split}
-\end{equation}
-
-Therefore, $\chi_{\nu}(\omega^r)$ has period $t$ with respect to $r$.
-\end{proof}
-
-\begin{corollary}
-$(2t)^{\nu} \chi_{\nu}(\omega^r)$ has period $t$ with respect to $r$.
-\end{corollary}
-
-\begin{proof}
-We have $(2t)^{\nu} \chi_{\nu}(\omega^{r+t}) = (2t)^{\nu} \chi_{\nu}(\omega^r)$ by $Theorem$ 5. Therefore, $(2t)^{\nu} \chi_{\nu}(\omega^r)$ has period $t$ with respect to $r$.
-\end{proof}
-
-\begin{definition}
-The Hurwitz zeta function is defined by
-\begin{equation}
-\zeta(s,q) = \sum_{n=0}^{\infty} \frac{1}{(q+n)^s}
-\end{equation}
-where $s > 1$ and $q > 0$.
-\end{definition}
-
-\begin{theorem}
-$(2t)^\nu \chi_{\nu}(\omega^{r})$ is the Fourier transform pair of $\zeta(\nu, (2s-1)/2t)$, where $\omega = e^{2\pi i/t}$
-\end{theorem}
-
-\begin{proof}
-If $\omega = e^{2\pi i/t}$, then $\omega^r = e^{2 \pi i r/t}$ and
-\begin{equation}
-\begin{split}
-\chi_{\nu}(\omega^{r}) &= \sum_{k=0}^{\infty} \frac{(\omega^r)^{2k+1}}{(2k+1)^{\nu}} \\
-&= \sum_{k=0}^{\infty} \frac{(e^{2 \pi i r/t})^{2k+1}}{(2k+1)^{\nu}} \\
-&= \sum_{k=0}^{\infty} \frac{e^{2 \pi i r(2k+1)/t}}{(2k+1)^{\nu}} \\
-&= \sum_{k=0}^{\infty} \frac{e^{(4 \pi irk +2\pi i r)/t}}{(2k+1)^{\nu}} \\
-&= \sum_{k=0}^{\infty} \frac{e^{(4 \pi irk +4 \pi ir - 2\pi i r)/t}}{(2k+1)^{\nu}} \\
-&= \sum_{k=0}^{\infty} \frac{e^{(4 \pi irk +4 \pi ir)/t}e^{- 2\pi i r/t}}{(2k+1)^{\nu}} \\
-&= e^{- 2\pi i r/t} \sum_{k=0}^{\infty} \frac{e^{4 \pi i r(k+1)/t}}{(2k+1)^{\nu}}
-\end{split}
-\end{equation}
-
-Therefore,
-
-\begin{equation}
-\begin{split}
-\chi_{\nu}(\omega^r)\omega^r &= \sum_{k=0}^{\infty} \frac{e^{2 \pi i r(2k+1)/t} \cdot e^{2 \pi i r/t}}{(2k+1)^{\nu}} \\
-&= \sum_{k=0}^{\infty} \frac{e^{4 \pi i r(k+1)/t}}{(2k+1)^{\nu}} \\
-\end{split}
-\end{equation}
-
-Now, for every $k \in \mathbb{Z}_{+}$ and fixed integer $t \in \mathbb{Z}_{+}$ there exist $unique$ integers $m$ and $s$ such that $k = mt +s$, where $0 \leq s < t-1$; i.e., $s \in R_{0}(t) = \{0, 1, ..., t-1\}$, where $R_{0}(t)$ is a complete residue system mod $t$. Therefore, by the property of complete residue systems mod $t$, for every integer $k \in \mathbb{Z}_{+}$, there exists an integer $s \in R_{0}(t)$ such that $k \equiv s \mod t$. Let $f(k,t)$ be some function of $k$ and $t$. By our preceding argument, there exist unique $m$ and $s$ in $\mathbb{Z}_{+}$ such that $k = mt +s$. Therefore,
-
-\begin{equation}
-\begin{split}
-\sum_{m=0}^{\infty} \sum_{s=0}^{t-1} f(tm+s,t) &= f(0 \cdot t + 0, t) + f(0 \cdot t +1, t) + \cdots + f(0 \cdot t + t-1, t) \\
-&+ f(1 \cdot t + 0, t) + f(1 \cdot t + 1,t ) + \cdots + f(1 \cdot t + t-1, t) \\
-&+ f(2 \cdot t + 0, t) + f(2 \cdot t +1, t) + \cdots + f(2 \cdot t + t-1, t) \\
-&+ \cdots \\ta
-&= f(0, t) + f(1, t) + \cdots + f(t-1, t) \\
-&+ f(t, t) + f(t+1, t) + \cdots + f(2t-1, t) \\
-&+f(2t, t) + f(2t +1, t) + \cdots f(3t-1, t) \\
-&+\cdots \\
-&= \sum_{k=0}^{\infty} f(k,t). \\
-\end{split}
-\end{equation}
-
-Therefore,
-\begin{equation}
-\begin{split}
-\chi_{\nu}(\omega^r)\omega^r &= \sum_{k=0}^{\infty} \frac{e^{4 \pi ir((k)+1)/t}}{(2(k)+1)^{\nu}} \\
-&= \sum_{m=0}^{\infty} \sum_{s=0}^{t-1}  \frac{e^{4 \pi ir((tm+s) +1)/t}}{(2(tm+s)+1)^{\nu}} \\
-&= \sum_{m=0}^{\infty} \sum_{s=1}^{t}  \frac{e^{4 \pi ir(tm+s)/t}}{(2tm+2s-1)^{\nu}} \
-\end{split}
-\end{equation}
-
-Again, let $f(tm + s, t)$ be an arbitrary function. Then the sum
-\begin{equation}
-\begin{split}
-\sum_{s=1}^{t} \sum_{m=0}^{\infty} f(tm+s, t) &= \sum_{s=1}^{t} f(s,t) + f(t+s,t) + f(2t +s, t) + \cdots \\
-&= f(1,t) + f(t+1,t) + f(2t+1,t) + \cdots \\
-&+ f(2,t) + f(t+2,t) + f(2t+2,t) + \cdots \\
-&+ \cdots \\
-&+ f(t,t) + f(2t,t) +f(3t, t) + \cdots
-\end{split}
-\end{equation}
-
-Summing vertically across the arrangement above gives
-\begin{equation}
-\begin{split}
-&f(1, t) + f(2, t) + \cdots + f(t, t) \\
-&+ f(t+1, t) + f(t+2, t) + \cdots + f(2t, t) \\
-&+f(2t+1, t) + f(2t +2, t) + \cdots f(3t, t) \\
-&+\cdots \\
-&= \sum_{k=1}^{\infty} f(k,t)
-\end{split}
-\end{equation}
-
-Therefore,
-\begin{equation}
-\sum_{s=1}^{t} \sum_{m=0}^{\infty}  f(tm+s, t) = \sum_{k=1}^{\infty} f(k,t) = \sum_{m=0}^{\infty} \sum_{s=1}^{t} f(tm+s,t)
-\end{equation}
-
-So our sum
-\begin{equation}
-\begin{split}
-\sum_{m=0}^{\infty} \sum_{s=1}^{t} \frac{e^{4 \pi ir(tm+s)/t}}{(2tm+2s-1)^{\nu}} &= \sum_{s=1}^{t} \sum_{m=0}^{\infty} \frac{e^{4 \pi ir(tm+s)/t}}{(2tm+2s-1)^{\nu}} \\
-&= \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} \sum_{m=0}^{\infty} \frac{e^{4 \pi imr} \cdot e^{4 \pi r is/t}}{(m+\frac{2s-1}{2t})^{\nu}}. \\
-&= \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} \sum_{m=0}^{\infty} \frac{e^{4 \pi r is/t}}{(m+\frac{2s-1}{2t})^{\nu}}
-\end{split}
-\end{equation}
-
-Therefore,
-
-\begin{equation}
-\begin{split}
-\omega^{-r}\chi_{\nu}(\omega^r)\omega^r &= \frac{\omega^{-r}}{(2t)^{\nu}} \sum_{s=1}^{t} \sum_{m=0}^{\infty} \frac{e^{4 \pi r is/t}}{(m+\frac{2s-1}{2t})^{\nu}} \\
-&=\frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} e^{4 \pi ris/t - 2 \pi ri/t} \sum_{m=0}^{\infty} \frac{1}{(m+\frac{2s-1}{2t})^{\nu}}. \\
-&= \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} e^{2 \pi ir(2s-1)/t} \sum_{m=0}^{\infty} \frac{1}{(m+\frac{2s-1}{2t})^{\nu}} \\
-&= \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} e^{2 \pi ir(2s-1)/t} \zeta(\nu, (2s-1)/2t)
-\end{split}
-\end{equation}
-
-So,
-
-\begin{equation}
-\omega^{-r}\chi_{\nu}(\omega^r)\omega^r = \chi_{\nu}(\omega^r) = \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} e^{2 \pi ir(2s-1)/t} \zeta(\nu, (2s-1)/2t)
-\end{equation}
-
-By Theorem 4, since $\zeta(\nu, (2s-1)/2t)$ is a function on $\mathbb{Z}(t)$, we have that
-\begin{equation}
-\zeta(\nu, (2s-1)/2t) = \sum_{r=1}^{t} a_{n} e^{2 \pi i r(2s-1)/t},
-\end{equation}
-where
-\begin{equation}
-a_n = \frac{1}{t} \sum_{s=1}^{t} \zeta(\nu, (2s-1)/2t) e^{-2 \pi r(2s-1)/t}
-\end{equation}
-So,
-\begin{equation}
-\begin{split}
-\zeta(\nu, (2s-1)/2t) &= \sum_{r=1}^{t} a_{n} e^{2 \pi i r(2s-1)/t} \\
-&= \sum_{r=1}^{t} \Bigg(\frac{1}{t} \sum_{s=1}^{t} \zeta(\nu, (2s-1)/2t) e^{-2 \pi r(2s-1)/t}\Bigg)e^{2 \pi i r(2s-1)/t} \\
-&= \frac{1}{t} \sum_{r=1}^{t} (2t)^{\nu} \Bigg(\frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} e^{2 \pi ir(2s-1)/t} \zeta(\nu, (2s-1)/2t \Bigg) e^{-2 \pi ir(2s-1)/t} \\
-&= \frac{1}{t} \sum_{r=1}^{t} (2t)^{\nu} \chi_{\nu}(e^{2 \pi ir(2s-1)/t})e^{-2 \pi ir(2s-1)/t} \\
-&= \frac{1}{t} \sum_{r=1}^{t} (2t)^{\nu} \chi_{\nu}(\omega^{r(2s-1)})\omega^{-r(2s-1)} \\
-&= \frac{1}{t} \sum_{r=1}^{t} (2t)^{\nu} \chi_{\nu}(\omega^{r})\omega^{-r},
-\end{split}
-\end{equation}
-
-since $r(2s-1) \equiv r \mod t$ implies that $\omega^{r(2s-1)} = \omega^{r}$ by Theorem 1. Similarly, $\omega^{-r(2s-1)} = \omega^{r}$ since $-r(2s-1) \equiv r \mod t$.
-\end{proof}
-
-We have shown that
-\begin{equation}
-\chi_{\nu}(\omega^r) = \frac{1}{(2t)^{\nu}} \sum_{s=1}^{t} e^{2 \pi ir(2s-1)/t} \zeta(\nu, (2s-1)/2t)
-\end{equation}
-and
-\begin{equation}
-\zeta(\nu, (2s-1)/2t) = \frac{1}{t} \sum_{r=1}^{t} (2t)^{\nu} \chi_{\nu}(\omega^{r})\omega^{-r}
-\end{equation}
-
-Therefore, there exists a discrete Fourier transform $\mathcal{F}$ such that $\mathcal{F}(\zeta(\nu, (2s-1)/2t)) = \chi_{\nu}(\omega^r)$ and $\mathcal{F}^{-1}(\chi_{\nu}(\omega^r)) = \zeta(\nu, (2s-1)/2t)$.
-
-\subsection{Polylogarithm}
-
-\begin{definition}
-The polylogarithm is defined by
-\begin{equation}
-Li_{s}(z) = \sum_{k=1}^{\infty} \frac{z^k}{k^s}
-\end{equation}
-where $s > 1$ and $|z| < 1$.
-\end{definition}
-
-\begin{theorem}
-$\chi_{s}(z) = \frac{1}{2} (Li_{s}(z) - Li_{s}(-z))$
-\end{theorem}
-\begin{proof}
-We have
-\begin{equation}
-\frac{1}{2} (Li_{s}(z) - Li_{s}(-z)) = \frac{1}{2} \sum_{k=1}^{\infty} \frac{z^{k} - (-z)^k}{k^s}
-\end{equation}
-When $k$ is even the summand is null; when k is odd, the summand is $2z^{k}/k^s$. Therefore,
-\begin{equation}
-\begin{split}
-\frac{1}{2} (Li_{s}(z) - Li_{s}(-z)) &= \frac{1}{2} \sum_{k=1}^{\infty} \frac{z^{k} - (-z)^k}{k^s} \\
-&= \frac{1}{2} \sum_{k=1,3,5,...} \frac{2(z)^k}{k^s} \\
-&= \sum_{k=0}^{\infty} \frac{z^{2k+1}}{(2k+1)^s} \\
-&= \chi_{s}(z)
-\end{split}
-\end{equation}
-\end{proof}
-\begin{corollary}
-The preceding gives us a unique representation of $\zeta(\nu)$ in terms of $\chi_{\nu}(\omega^r)$. Let $\frac{2s-1}{2t} = 1$. Then, $t = s - \frac{1}{2}.$ Therefore,
-\begin{equation}
-\begin{split}
-\zeta(\nu, \frac{2s-1}{2t}) &= \zeta(\nu) \\
-&= \frac{1}{t} \sum_{r=1}{t} (2t)^{\nu} \chi_{\nu}(\omega^{r+t}) \omega^{-r(2t-1)} \\
-&= \frac{1}{t} \sum_{r=1}{t} (2t)^{\nu} \chi_{\nu}(\omega^{r+t}) \omega^{r} \\
-&= \prod_{p} \frac{1}{1- p^{-\nu}}\qed
-\end{split}
-\end{equation}
-\end{corollary}
+With the discrete Fourier transform defined, it is now possible to define the Fast Fourier Transform, which is the subject of the next section.
 
 \end{document}
