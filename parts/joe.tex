@@ -24,24 +24,30 @@ Let $\mathbb{Z}(N)$ be the set of all N-th roots of unity. Then,
  \[Z(N) = \{z \in C : z^N = 1 \}\]
 \end{definition}
 \begin{theorem}
-For all $N \in \mathbb{Z}$, we have that
+For all $N \in \mathbb{Z}$, we have
 \[\mathbb{Z}(N)= \left\{1, e^{(2 \pi i)/N}, e^{(4 \pi i)/N}, \ldots, e^{(2(N-1) \pi i)/N}\right\}\]
 \end{theorem}
 
 \begin{proof}
-Let $z$ $\in \mathbb{Z}(N)$. Then, $z^N = (r \cdot e^{i \theta})^N = 1$. Therefore, $\mid r^N \mid \mid e^{i N \theta} \mid = 1$. Hence, $r = e^{i N \theta} = 1$. Therefore, $N\theta = 2k\pi$, where $k \in \mathbb{Z}$. Let $\zeta$ = $e^{2 \pi i /(N-1)}$. Then,
-\begin{align*}
-	(\zeta^0)^N &= e^0 = 1 \\
-	(\zeta^1)^N &= e^{2 \pi i} = 1 \\
-	(\zeta^2)^N &= e^{4 \pi i} = 1 \\
-	{} &\vdotswithin{=}\\
-	(\zeta^{N-1})^N &= (e^{2 \pi i(N-1)/N})^N \\
-	{} &= (e^{2 \pi i}e^{-2 \pi i/N})^N \\
-	{} &= 1 \cdot e^{-2 \pi i} \\
-	{} &= 1
-\end{align*}
-Therefore, $\zeta^k \in \mathbb{Z}(N)$ for all $k$ such that $0 \leq k \leq N-1$. Notice that the set $Q = \{0, 1, 2, \ldots, N-1\}$ is a residue system modulo $N$, and that the set $\zeta^Q = \left\{1, e^{2 \pi i/N}, e^{4 \pi i/N}, \ldots, e^{2(N-1) \pi i/N}\right\} \subseteq \mathbb{Z}(N) $.
-Now, for every $n \in \mathbb{Z}$, there exists an integer $m \in Q$ such that $n \equiv m \mod N$, since $Q$ is a complete residue system modulo $N$. When $k \geq N-1$, we have that $k \equiv l \mod N$ for some $l \in Q$. Therefore, $\mathbb{Z}(N) \subseteq Q$, and since we know $Q \subseteq Z(N)$, we have $Q = Z(N)$.
+    Let $z = re^{i\theta} \in \mathbb{Z}(N)$. Then:
+    \[
+        |(re^{i\theta})^N| = |r^N| = 1
+    \]
+    So we know that $z = e^{i\theta}$. Next for any 
+    $0 \leq k < N$ we know that:
+    \[
+        (e^{2\pi ik/N})^N = e^{2\pi ik} = 1
+    \]
+    Thus all of these are roots of unity. Moreover it is 
+    easy to see that for $k' < 0$ or $k' \geq N$ that there
+    exists some $0 \leq k < N$ such that $k' \equiv k \mod N$.
+    Additionally if $\theta \neq 2\pi if/N$, for some $f \in 
+    \mathbb{Z}$ then
+    \[
+        (e^{i\theta})^N = e^{iN\theta} \neq e^{2\pi if} = 1
+    \]
+    Thus not only are all of these numbers roots of unity,
+    they are the only roots of unity.
 \end{proof}
 
 We can also show that $\mathbb{Z}(N)$ is a finite abelian group and, indeed, forms a basis of a vector space of complex-valued functions on the unit circle.
@@ -51,22 +57,33 @@ $\mathbb{Z}(N)$ is a finite abelian group.
 \end{theorem}
 
 \begin{proof}
-That $| \mathbb{Z}(N)| < \infty$ is self-edvident. Thus, $\mathbb{Z}(N)$ is a finite group. Letting $z,w \in \mathbb{Z}(N)$, we find that $z \cdot w = e^{2 \pi i (k+l)/N}$ for some $k,l \in \mathbb{Z}$. Then, by the complete residue theorem of number theory, there exists an $m \in \{1, 2, 3, ..., N-1\}$ such that $(k+l) \equiv m \mod N$. Hence, $e^{2 \pi i (k+l)/N} = e^{2 \pi i m/N} \in \mathbb{Z}(N)$. Therefore, $\mathbb{Z}(N)$ is closed under complex multiplication. Let $z,w \in \mathbb{Z}(N)$. Then $z \cdot w = e^{2 \pi i k/N} \cdot e^{2 \pi i l/N} = e^{2 \pi i (k+l)/N} = e^{2 \pi i (l+k)/N} = e^{2 \pi i l/N} \cdot e^{2 \pi i k/N} = w \cdot z$. Therefore $(\mathbb{Z}(N), \cdot)$ is commutative. Next, let $z,w,s \in \mathbb{Z}(N)$. Then, $(z \cdot w) \cdot s = (e^{2 \pi i k/N} \cdot e^{2 \pi i l/N}) \cdot e^{2 \pi i t/N} = e^{2 \pi i ((k+l)+t)/N} = e^{2 \pi i (k+(l+t))/N} = e^{2 \pi i k/N} \cdot (e^{2 \pi i l/N} \cdot e^{2 \pi i t/N}) = z \cdot (w \cdot s)$. So $(\mathbb{Z}(N), \cdot)$ is associative. The identity element is $1 \in \mathbb{Z}(N)$, since for all $z \in \mathbb{Z}(N)$ we have $z \cdot 1 = z$. If $z \in \mathbb{Z}(N)$, then $(1/z)^N = 1/ z^N = 1$. Therefore, $1/z \in \mathbb{Z}(N)$ and the inverse of any $z \in \mathbb{Z}(N)$ is $1/z$. Therefore, $\mathbb{Z}(N)$ is an abelian group.
+    We already showed that $\mathbb{Z}(N)$ has $N < \infty$
+    elements thus is is finite. More over if $z_1,z_2 \in
+    \mathbb{Z}(N)$ we have:
+    \[
+        (z_1z_2^{-1})^N = \frac{z_1^N}{z_2^N} = \frac{1}{1} = 1
+    \]
+    Thus $z_1z_2^{-1} \in \mathbb{Z}(N)$ and via the subgroup
+    test $\mathbb{Z}(N)$ is a subgroup of $\mathbb{C}$.
 \end{proof}
 
-Furthermore, we can show that $\mathbb{Z}/ N\mathbb{Z}$, the set of all equivalence classes of integers modulo $N$, is an abelian group.
+Furthermore it is the case that $\mathbb{Z}(N)$ is isomorphic
+to $\mathbb{Z}/N\mathbb{Z}$
 
-\begin{definition}
-For all $x \in \mathbb{Z}$, let $R_N (x) = \{y \in \mathbb{Z} : y \equiv x   \mod   N\}$, where $N \in \mathbb{Z}$
-\end{definition}
 \begin{theorem}
-For all $x,y \in \mathbb{Z}$, $R_N (x) + R_N (y) = R_N (x+y).$
+$\mathbb{Z}(N)$ is isomorphic to $\mathbb{Z}/N\mathbb{Z}$
 \end{theorem}
-\begin{proof}
-Let $\alpha \in R_N (x)$ and $\beta \in R_N (y)$. Then, $\alpha = x +kN$ for some $k \in \mathbb{Z}$ and $\beta = y + lN$ for some $l \in \mathbb{Z}$. Then, $(x+y)+(k+l)N \in R_N (x+y)$. Conversely, let $x+y \in R_N (x+y)$. Then, $x = \alpha -kN$ and $y = \beta -lN$. Therefore, $(x+y) = (\alpha + \beta) -(k+l)N$. Therefore, $(x+y) \equiv \alpha +\beta) \mod N$. Therefore, $x \equiv \alpha \mod N$ and $y \equiv \beta \mod N$. Therefore, $x+y \in R_N (x) + R_N (y)$.
-\end{proof}
 
-Now that we have proven $\mathbb{Z}(N)$ is a finite abelian group and homomorphic to the group $\mathbb{Z} /N\mathbb{Z}(N)$, we can think of the discrete Fourier transform as a vector space over $\mathbb{Z}(N)$ with the Hermitian inner product
+\begin{proof}
+    We note that for any element $z \in \mathbb{Z}(N)$
+    that:
+    \[
+        z = e^{2\pi in/N} = (e^{2\pi/N})^n
+    \]
+    Thus $\mathbb{Z}(N)$ is a cyclic group of order $N$ 
+    which shows it is isomorphic to $\mathbb{Z}/N\mathbb{Z}$
+\end{proof}
+Now that we have proven $\mathbb{Z}(N)$ is a finite abelian group  isomorphic to $\mathbb{Z} /N\mathbb{Z}(N)$, we can think of the discrete Fourier transform as a vector space over $\mathbb{Z}(N)$ with the Hermitian inner product
 
 
 \[
